@@ -450,65 +450,65 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
-Thing 5)
+Thing 5: Audio Input
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) amount of amplitude
+    2) number of channels 
+    3) hpf cutoff frequency
+    4) amount of saturation
+    5) polarity
 3 things it can do:
-    1)
-    2)
-    3)
+    1) ajust incoming signal amplitude
+    2) process incoming signal
+    3) invert polarity of incoming signal
 
-Thing 6)
+Thing 6: Audio Channel
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) stereo position
+    2) channel volume
+    3) channel solo
+    4) channel mute
+    5) channel send to reverb
 3 things it can do:
-    1)
-    2)
-    3)
+    1) control the volume of a channel
+    2) control the stereo position of a channel
+    3) control the mute of all other audio channels
 
-Thing 7)
+Thing 7: Channel EQ
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) high pass frquency
+    2) high frequenecy selecttion
+    3) high frequency gain
+    4) low freuqency selecttion
+    5) low frequency gain
 3 things it can do:
-    1)
-    2)
-    3)
+    1) cut low frequencies
+    2) select low and high frequencies
+    3) boost or cut selected frequencies
 
-Thing 8)
+Thing 8: Channel Dynamics
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) compressor threshold
+    2) compresor ratio
+    3) compressor speed
+    4) gate/expander range
+    5) gate threshold
 3 things it can do:
-    1)
-    2)
-    3)
+    1) reduce dynamic range through compression
+    2) increase dynamic range through expansion
+    3) use the range control to turn the gate into an expander
 
-Thing 9)
+Thing 9: Reverb
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) reverb type
+    2) reverb time
+    3) reverb decay
+    4) dampening
+    4) reverb level
 3 things it can do:
-    1)
-    2)
-    3)
+    1) recieve signal from mixer channels
+    2) provide a range of spacial effects from ambience to halls
+    3) control level to blend into main audio signal
  */
 
 /*
