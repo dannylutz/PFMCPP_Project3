@@ -303,19 +303,21 @@ Example:
     these 5 Sub Objects will need to be defined with 5 primitive 
     properties and 3 actions EACH.
 
-    Example:
-    UDT: Sampler Synth
+Example:
+    UDT: Cell Phone
 
-    An Audio Mixer is built using the following 5 UDTs:
-        Audio Input
-        Audio Channel
-        Channel EQ
-        Channel Dynamics
-        Reverb
-    An Audio Mixer has 3 things it can do:
-        balance and sum audio channels
-        process audio channel signal
-        apply parallel effects selectively
+    A Cell Phone is built using the following 5 UDTs:
+        Display
+        Memory
+        CPU
+        Radio
+        Applications
+
+    A Cell Phone has 3 things it can do:
+        make a call
+        send a text
+        run an application.
+
 */
 
 /*
@@ -351,17 +353,17 @@ Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
 
-Thing 10)
+Thing 10) Audio Mixer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Audio Input
+    2) Audio Channel
+    3) Channel EQ
+    4) Channel Dynamics
+    5) Reverb
 3 things it can do:
-    1)
-    2)
-    3)
+    1) proces audio channel signal
+    2) balance and sum audio channels
+    3) apply parallel effects selectively
  */
 
  /*
