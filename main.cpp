@@ -196,53 +196,7 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-Thing 1: Simple Oscillator
-5 properties:
-    1) frequency (double)
-    2) waveform (unsigned int)
-    3) octave (int)
-    4) drift (double))
-    5) output (double)
-3 things it can do:
-    1) generate audio rate frequencies
-    2) generate low frequencies to modulate other devices
-    3) accept control voltage from other sources
 
-Thing 2: Sample Player
-5 properties:
-    1) audio file (string)
-    2) transpose sample (int))
-    3) loop toggle (bool)
-    4) loop start sample index (int)
-    5) loop end sample index (int)
-3 things it can do:
-    1) play sample
-    2) loop sample
-    3) load sample
-
-Thing 3: ADR Amp Envelope
-5 properties:
-    1) attack time (double)
-    2) decay time (double))
-    3) release time (double)
-    4) polarity (unsigned int)
-    5) amplifier envelope amount (double)
-3 things it can do:
-    1) generate control voltages 
-    2) apply envelope to audio input via internal amplifier
-    3) accept trigger signals
-
-Thing 4: Saturating Flter
-5 properties:
-    1) filter type (unsigned int))
-    2) cutoff frequency (double))
-    3) resonance (double)
-    4) saturation amount (double)
-    5) number of poles (unsigned int))
-3 things it can do:
-    1) high pass filter audio signals
-    2) low pass filter audio signals
-    3) apply harmonic saturation to audio signals
 */
 
 /*
@@ -452,11 +406,11 @@ example:
 
 Thing 5: Audio Input
 5 properties:
-    1) amount of amplitude
-    2) number of channels 
-    3) hpf cutoff frequency
-    4) amount of saturation
-    5) polarity
+    1) amount of amplitude (double)
+    2) number of channels (unsigned int)
+    3) hpf cutoff frequency (double)
+    4) amount of saturation (double)
+    5) polarity (bool)
 3 things it can do:
     1) ajust incoming signal amplitude
     2) process incoming signal
@@ -464,11 +418,11 @@ Thing 5: Audio Input
 
 Thing 6: Audio Channel
 5 properties:
-    1) stereo position
-    2) channel volume
-    3) channel solo
-    4) channel mute
-    5) channel send to reverb
+    1) stereo position (double)
+    2) channel volume (double)
+    3) channel name (string)
+    4) channel mute (bool)
+    5) channel send amount to reverb (double)
 3 things it can do:
     1) control the volume of a channel
     2) control the stereo position of a channel
@@ -476,23 +430,23 @@ Thing 6: Audio Channel
 
 Thing 7: Channel EQ
 5 properties:
-    1) high pass frquency
-    2) high frequenecy selecttion
-    3) high frequency gain
-    4) low freuqency selecttion
-    5) low frequency gain
+    1) high pass frquency (double)
+    2) high frequenecy selecttion (double)
+    3) high frequency gain (double)
+    4) low freuqency selecttion (double)
+    5) low frequency gain (double)
 3 things it can do:
-    1) cut low frequencies
+    1) high pass filter signal
     2) select low and high frequencies
     3) boost or cut selected frequencies
 
 Thing 8: Channel Dynamics
 5 properties:
-    1) compressor threshold
-    2) compresor ratio
-    3) compressor speed
-    4) gate/expander range
-    5) gate threshold
+    1) compressor threshold (double)
+    2) compresor ratio (unsigned int)
+    3) compressor speed (double)
+    4) gate/expander range (double)
+    5) gate threshold (double)
 3 things it can do:
     1) reduce dynamic range through compression
     2) increase dynamic range through expansion
@@ -500,11 +454,11 @@ Thing 8: Channel Dynamics
 
 Thing 9: Reverb
 5 properties:
-    1) reverb type
-    2) reverb time
-    3) reverb decay
-    4) dampening
-    4) reverb level
+    1) reverb type (int)
+    2) reverb time (double)
+    3) reverb decay (double)
+    4) dampening (double)
+    4) reverb level (double)
 3 things it can do:
     1) recieve signal from mixer channels
     2) provide a range of spacial effects from ambience to halls
