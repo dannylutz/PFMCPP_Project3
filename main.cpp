@@ -196,53 +196,6 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-    Thing 1: Simple Oscillator
-    5 properties:
-        1) frequency (double)
-        2) waveform (unsigned int)
-        3) octave (int)
-        4) drift (double))
-        5) output (double)
-    3 things it can do:
-        1) generate audio rate frequencies
-        2) generate low frequencies to modulate other devices
-        3) accept control voltage from other sources
-
-    Thing 2: Sample Player
-    5 properties:
-        1) audio file (string)
-        2) transpose sample (int))
-        3) loop toggle (bool)
-        4) loop start sample index (int)
-        5) loop end sample index (int)
-    3 things it can do:
-        1) play sample
-        2) loop sample
-        3) load sample
-
-    Thing 3: ADR Amp Envelope
-    5 properties:
-        1) attack time (double)
-        2) decay time (double))
-        3) release time (double)
-        4) polarity (unsigned int)
-        5) amplifier envelope amount (double)
-    3 things it can do:
-        1) generate control voltages 
-        2) apply envelope to audio input via internal amplifier
-        3) accept trigger signals
-
-    Thing 4: Saturating Flter
-    5 properties:
-        1) filter type (unsigned int))
-        2) cutoff frequency (double))
-        3) resonance (double)
-        4) saturation amount (double)
-        5) number of poles (unsigned int))
-    3 things it can do:
-        1) high pass filter audio signals
-        2) low pass filter audio signals
-        3) apply harmonic saturation to audio signals
 */
 
 /*
@@ -352,18 +305,6 @@ Part 1c - Step 4: Assignment
 Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
-
-Thing 10) Audio Mixer
-5 properties:
-    1) Audio Input
-    2) Audio Channel
-    3) Channel EQ
-    4) Channel Dynamics
-    5) Reverb
-3 things it can do:
-    1) proces audio channel signal
-    2) balance and sum audio channels
-    3) apply parallel effects selectively
  */
 
  /*
@@ -450,6 +391,109 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
+ */
+
+/*
+=================
+Part 1d - Step 3: Commit
+=================
+Now that you've made changes to the code, make a commit!
+Be sure to make the commit message meaningful.
+*/
+
+/*
+================
+Part 1d - Step 4: Assignment
+================
+    - write the name of the primitive type you'll be using after each property for UDTs 5 - 9.
+    - You already did this for UDTs 1-4 in Part 1c.
+    - Pick properties that can be represented with 'int float double bool char std::string'
+    
+example: 
+    Display:
+        Number of Pixels (int)
+        Amount of Power consumed (milliwatt-hours) (float)
+        Brightness (double)
+        width in cm (int)
+        height in cm (int)
+*/
+
+/*
+=================
+Part 1d - Step 5: Commit
+=================
+Now that you've made changes to the code, make a commit!
+Be sure to make the commit message meaningful.
+*/
+
+/*
+===================
+Part 1d - Step 6: assignment
+===================
+You've just defined 10 UDTs!
+4 of them are unrelated (UDTs 1-4).
+5 of them form the sub-objects that make up the 10th UDT. 
+
+MOVE THEM to the space below this block comment and put them in numerical order 
+(1 - 10).
+    DO NOT COPY. 
+    CUT AND PASTE. 
+    I do not want to see 2 copies of your Plain-English UDTs.  
+    I only want to see the 10 UDTs written BELOW this block comment, in numerical order (1 - 10).
+    simply CUT and PASTE them in the space provided below:
+*/
+
+/*
+====================================================================
+
+Thing 1: Simple Oscillator
+5 properties:
+    1) frequency (double)
+    2) waveform (unsigned int)
+    3) octave (int)
+    4) drift (double))
+    5) output (double)
+3 things it can do:
+    1) generate audio rate frequencies
+    2) generate low frequencies to modulate other devices
+    3) accept control voltage from other sources
+
+Thing 2: Sample Player
+5 properties:
+    1) audio file (string)
+    2) transpose sample (int))
+    3) loop toggle (bool)
+    4) loop start sample index (int)
+    5) loop end sample index (int)
+3 things it can do:
+    1) play sample
+    2) loop sample
+    3) load sample
+
+Thing 3: ADR Amp Envelope
+5 properties:
+    1) attack time (double)
+    2) decay time (double))
+    3) release time (double)
+    4) polarity (unsigned int)
+    5) amplifier envelope amount (double)
+3 things it can do:
+    1) generate control voltages 
+    2) apply envelope to audio input via internal amplifier
+    3) accept trigger signals
+
+Thing 4: Saturating Flter
+5 properties:
+    1) filter type (unsigned int))
+    2) cutoff frequency (double))
+    3) resonance (double)
+    4) saturation amount (double)
+    5) number of poles (unsigned int))
+3 things it can do:
+    1) high pass filter audio signals
+    2) low pass filter audio signals
+    3) apply harmonic saturation to audio signals
+
 Thing 5: Audio Input
 5 properties:
     1) amount of amplitude (double)
@@ -509,63 +553,21 @@ Thing 9: Reverb
     1) recieve signal from mixer channels
     2) provide a range of spacial effects from ambience to halls
     3) control level to blend into main audio signal
- */
 
-/*
-=================
-Part 1d - Step 3: Commit
-=================
-Now that you've made changes to the code, make a commit!
-Be sure to make the commit message meaningful.
+Thing 10) Audio Mixer
+5 properties:
+    1) Audio Input
+    2) Audio Channel
+    3) Channel EQ
+    4) Channel Dynamics
+    5) Reverb
+3 things it can do:
+    1) proces audio channel signal
+    2) balance and sum audio channels
+    3) apply parallel effects selectively
+
+====================================================================
 */
-
-/*
-================
-Part 1d - Step 4: Assignment
-================
-    - write the name of the primitive type you'll be using after each property for UDTs 5 - 9.
-    - You already did this for UDTs 1-4 in Part 1c.
-    - Pick properties that can be represented with 'int float double bool char std::string'
-    
-example: 
-    Display:
-        Number of Pixels (int)
-        Amount of Power consumed (milliwatt-hours) (float)
-        Brightness (double)
-        width in cm (int)
-        height in cm (int)
-*/
-
-/*
-=================
-Part 1d - Step 5: Commit
-=================
-Now that you've made changes to the code, make a commit!
-Be sure to make the commit message meaningful.
-*/
-
-/*
-===================
-Part 1d - Step 6: assignment
-===================
-You've just defined 10 UDTs!
-4 of them are unrelated (UDTs 1-4).
-5 of them form the sub-objects that make up the 10th UDT. 
-
-MOVE THEM to the space below this block comment and put them in numerical order 
-(1 - 10).
-    DO NOT COPY. 
-    CUT AND PASTE. 
-    I do not want to see 2 copies of your Plain-English UDTs.  
-    I only want to see the 10 UDTs written BELOW this block comment, in numerical order (1 - 10).
-    simply CUT and PASTE them in the space provided below:
-*/
-
-
-
-
-
-
 
 
 /*
