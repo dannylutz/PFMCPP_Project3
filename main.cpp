@@ -196,7 +196,53 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
+    Thing 1: Simple Oscillator
+    5 properties:
+        1) frequency (double)
+        2) waveform (unsigned int)
+        3) octave (int)
+        4) drift (double))
+        5) output (double)
+    3 things it can do:
+        1) generate audio rate frequencies
+        2) generate low frequencies to modulate other devices
+        3) accept control voltage from other sources
 
+    Thing 2: Sample Player
+    5 properties:
+        1) audio file (string)
+        2) transpose sample (int))
+        3) loop toggle (bool)
+        4) loop start sample index (int)
+        5) loop end sample index (int)
+    3 things it can do:
+        1) play sample
+        2) loop sample
+        3) load sample
+
+    Thing 3: ADR Amp Envelope
+    5 properties:
+        1) attack time (double)
+        2) decay time (double))
+        3) release time (double)
+        4) polarity (unsigned int)
+        5) amplifier envelope amount (double)
+    3 things it can do:
+        1) generate control voltages 
+        2) apply envelope to audio input via internal amplifier
+        3) accept trigger signals
+
+    Thing 4: Saturating Flter
+    5 properties:
+        1) filter type (unsigned int))
+        2) cutoff frequency (double))
+        3) resonance (double)
+        4) saturation amount (double)
+        5) number of poles (unsigned int))
+    3 things it can do:
+        1) high pass filter audio signals
+        2) low pass filter audio signals
+        3) apply harmonic saturation to audio signals
 */
 
 /*
