@@ -198,11 +198,11 @@ Part 1b - Step 2: Assignment
 
 Thing 1: Simple Oscillator
 5 properties:
-    1) frequency
-    2) waveform
-    3) octave
-    4) drift
-    5) output
+    1) frequency (double)
+    2) waveform (unsigned int)
+    3) octave (int)
+    4) drift (double))
+    5) output (double)
 3 things it can do:
     1) generate audio rate frequencies
     2) generate low frequencies to modulate other devices
@@ -210,11 +210,11 @@ Thing 1: Simple Oscillator
 
 Thing 2: Sample Player
 5 properties:
-    1) audio file
-    2) transpose sample
-    3) loop toggle
-    4) loop start sample index
-    5) loop end sample index
+    1) audio file (string)
+    2) transpose sample (int))
+    3) loop toggle (bool)
+    4) loop start sample index (int)
+    5) loop end sample index (int)
 3 things it can do:
     1) play sample
     2) loop sample
@@ -222,11 +222,11 @@ Thing 2: Sample Player
 
 Thing 3: ADR Amp Envelope
 5 properties:
-    1) attack stage
-    2) decay stage
-    3) release stage
-    4) polarity
-    5) amplifier envelope amount
+    1) attack time (double)
+    2) decay time (double))
+    3) release time (double)
+    4) polarity (unsigned int)
+    5) amplifier envelope amount (double)
 3 things it can do:
     1) generate control voltages 
     2) apply envelope to audio input via internal amplifier
@@ -234,11 +234,11 @@ Thing 3: ADR Amp Envelope
 
 Thing 4: Saturating Flter
 5 properties:
-    1) filter type
-    2) cutoff frequency
-    3) resonance
-    4) saturation amount
-    5) number of poles
+    1) filter type (unsigned int))
+    2) cutoff frequency (double))
+    3) resonance (double)
+    4) saturation amount (double)
+    5) number of poles (unsigned int))
 3 things it can do:
     1) high pass filter audio signals
     2) low pass filter audio signals
@@ -302,6 +302,20 @@ Example:
     When you choose your 5 smaller parts, remember that each of 
     these 5 Sub Objects will need to be defined with 5 primitive 
     properties and 3 actions EACH.
+
+    Example:
+    UDT: Sampler Synth
+
+    An Audio Mixer is built using the following 5 UDTs:
+        Audio Input
+        Audio Channel
+        Channel EQ
+        Channel Dynamics
+        Reverb
+    An Audio Mixer has 3 things it can do:
+        balance and sum audio channels
+        process audio channel signal
+        apply parallel effects selectively
 */
 
 /*
