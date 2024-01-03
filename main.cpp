@@ -451,7 +451,7 @@ Thing 1: Simple Oscillator
     1) frequency (double)
     2) waveform (unsigned int)
     3) octave (int)
-    4) drift (double))
+    4) drift (double)
     5) output (double)
 3 things it can do:
     1) generate audio rate frequencies
@@ -461,7 +461,7 @@ Thing 1: Simple Oscillator
 Thing 2: Sample Player
 5 properties:
     1) audio file (string)
-    2) transpose sample (int))
+    2) transpose sample (int)
     3) loop toggle (bool)
     4) loop start sample index (int)
     5) loop end sample index (int)
@@ -484,14 +484,14 @@ Thing 3: ADR Amp Envelope
 
 Thing 4: Saturating Flter
 5 properties:
-    1) filter type (unsigned int))
-    2) cutoff frequency (double))
+    1) filter type (unsigned int)
+    2) cutoff frequency (double)
     3) resonance (double)
     4) saturation amount (double)
-    5) number of poles (unsigned int))
+    5) number of poles (unsigned int)
 3 things it can do:
-    1) high pass filter audio signals
-    2) low pass filter audio signals
+    1) high-pass filter audio signals
+    2) low-pass filter audio signals
     3) apply harmonic saturation to audio signals
 
 Thing 5: Audio Input
@@ -520,13 +520,13 @@ Thing 6: Audio Channel
 
 Thing 7: Channel EQ
 5 properties:
-    1) high pass frquency (double)
+    1) high-pass frquency (double)
     2) high frequenecy selecttion (double)
     3) high frequency gain (double)
     4) low freuqency selecttion (double)
     5) low frequency gain (double)
 3 things it can do:
-    1) high pass filter signal
+    1) high-pass filter signal
     2) select low and high frequencies
     3) boost or cut selected frequencies
 
@@ -562,7 +562,7 @@ Thing 10) Audio Mixer
     4) Channel Dynamics
     5) Reverb
 3 things it can do:
-    1) proces audio channel signal
+    1) proces audio channels
     2) balance and sum audio channels
     3) apply parallel effects selectively
 
