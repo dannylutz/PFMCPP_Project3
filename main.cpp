@@ -450,12 +450,16 @@ Thing 1: Simple Oscillator
 */
 struct SimpleOscillator
 {
-    //5 properties:
-    //    - frequency (double)
-    //    - waveform (unsigned int) //enum
-    //    - octave (int)
-    //    - drift (double)
-    //    - output (double)
+    //frequency of oscllator in Hz
+    double frequency = 440.0;
+    //waveform selected
+    unsigned int waveform = 0;
+    //octave of oscillator
+    int octave = 0;
+    //drift applied to oscillator pitch
+    double drift = 0.213;
+    //output level of oscillator
+    double output = 0.707;
     //3 things it can do:
     //    - generate audio rate frequencies
     //    - generate low frequencies to modulate other devices
@@ -467,12 +471,16 @@ Thing 2: Sample Player
 */
 struct SamplePlayer
 {
-    //5 properties:
-    //    - audio file (string)
-    //    - transpose sample (int)
-    //    - loop toggle (bool)
-    //    - loop start sample index (int)
-    //    - loop end sample index (int)
+    //audio file loaded
+    audioFile = "./samples/sample.wav";
+    //transpose value of sample
+    int transpose = 0;
+    //loop state of sample
+    bool loop = false;
+    //loop start sample index
+    int loopStart = 12790;
+    //loop end sample index
+    int loopEnd = 86500;
     //3 things it can do:
     //    - play sample
     //    - loop sample
@@ -484,12 +492,16 @@ Thing 3: ADR Amp Envelope
 */
 struct ADRAmpEnvelope
 {
-    //5 properties:
-    //    - attack time (double)
-    //    - decay time (double))
-    //    - release time (double)
-    //    - polarity (unsigned int)
-    //    - amplifier envelope amount (double)
+    //attack time in seconds
+    double attack = 0.012;
+    //decay time in seconds
+    double decay = 0.145;
+    //release time in seconds
+    double release = 0.68;
+    //polarity of envelope
+    unsigned int polarity = 0;
+    //amplifier envelope amount
+    double amount = 0.707;
     //3 things it can do:
     //    - generate 'control voltages'
     //    - apply envelope to audio input via internal amplifier
@@ -501,16 +513,21 @@ Thing 4: Saturating Flter
 */
 struct SaturatingFilter
 {
-    //5 properties:
-    //    - filter type (unsigned int) //enum
-    //    - cutoff frequency (double)
-    //    - resonance (double)
-    //    - saturation amount (double)
-    //    - number of poles (unsigned int)
+    //filter type
+    unsigned int filterType = 0;
+    //filter cutoff frequency in Hz
+    double cutoff = 1004.75;
+    //filter resonance
+    double resonance = 0.99;
+    //filter drive
+    double drive = 0.5;
+    //filter output level
+    double output = 0.707;
     //3 things it can do:
-    //    - high-pass filter audio signals
-    //    - low-pass filter audio signals
-    //    - apply harmonic saturation to audio signals
+    //    - filter audio input
+    //    - apply saturation to audio input
+    //    - adjust output level
+};
 };
 /*
 
@@ -518,12 +535,16 @@ Thing 5: Audio Input
 */
 struct AudioInput
 {
-    //5 properties:
-    //    - amount of amplitude (double)
-    //    - number of channels (bool)
-    //    - hpf cutoff frequency (double)
-    //    - amount of saturation (double)
-    //    - polarity (bool)
+    //amount of amplitude
+    double amplitude = 0.707;
+    //number of channels
+    bool stereo = true;
+    //hpf cutoff frequency in kHz
+    double hpfCutoff = 20.0;
+    //amount of saturation
+    double saturation = 0.5;
+    //polarity of input (true == inverted)
+    bool polarity = true;
     //3 things it can do:
     //    - ajust incoming signal amplitude
     //    - process incoming signal
@@ -535,12 +556,16 @@ Thing 6: Audio Channel
 */
 struct AudioChannel
 {
-    //5 properties:
-    //    - stereo position (double)
-    //    - channel volume (double)
-    //    - channel name (string)
-    //    - channel mute (bool)
-    //    - channel send amount to reverb (double)
+    //stereo position
+    double  stereoPosition = 0.5;
+    //channel volume
+    double channelVolume = 0.707;
+    //channel name
+    std::string channelName = "channel 1";
+    //channel mute state
+    bool channelMute = false;
+    //channel send amount to reverb
+    double reverbSend = 0.5;
     //3 things it can do:
     //    - control the volume of a channel
     //    - control the stereo position of a channel
@@ -552,12 +577,16 @@ Thing 7: Channel EQ
 */
 struct ChannelEQ
 {
-    //5 properties:
-    //    - high-pass frequency (double)
-    //    - high frequenecy selection (double)
-    //    - high frequency gain (double)
-    //    - low freuqency selecttion (double)
-    //    - low frequency gain (double)
+    //high-pass frequency in Hz
+    double highPassFrequency = 20.0;
+    //high frequenecy selection in kHz
+    double highFrequencySelection = 8.2;
+    //high frequency gain in dB
+    double highFrequencyGain = 0.5;
+    //low freuqency selection in Hz
+    double lowFrequencySelection = 245.45;
+    //low frequency gain in dB
+    double lowFrequencyGain = 0.5;  
     //3 things it can do:
     //    - high-pass filter signal
     //    - select low and high frequencies
@@ -569,16 +598,20 @@ Thing 8: Channel Dynamics
 */
 struct ChannelDynamics
 {
-    //5 properties:
-    //    - compressor threshold (double)
-    //    - compresor ratio (unsigned int)
-    //    - compressor speed (double)
-    //    - gate/expander range (double)
-    //    - gate threshold (double)
+    //compressor threshold in dB
+    double compressorThreshold = -12.0;
+    //compressor ratio
+    double compressorRatio = 2.0;
+    //compressor attack time in seconds
+    double compressorAttack = 0.012;
+    //compressor release time in seconds
+    double compressorRelease = 0.68;
+    //compressor makeup gain in dB
+    double compressorMakeupGain = 0.5;
     //3 things it can do:
-    //    - reduce dynamic range through compression
-    //    - increase dynamic range through expansion
-    //    - use the range control to turn the gate into an expander
+    //    - compress signal
+    //    - adjust attack and release times
+    //    - adjust makeup gain
 };
 /*
 
@@ -586,16 +619,20 @@ Thing 9: Reverb
 */
 struct Reverb
 {
-    //5 properties:
-    //    - reverb type (int) // enum
-    //    - reverb time (double)
-    //    - reverb decay (double)
-    //    - dampening (double)
-    //    - reverb level (double)
+    //reverb time in seconds
+    double reverbTime = 0.35;
+    //reverb pre-delay in seconds
+    double reverbPreDelay = 0.012;
+    //reverb diffusion amount
+    double reverbDiffusion = 0.5;
+    //reverb damping amount
+    double reverbDamping = 0.5;
+    //reverb output level
+    double reverbOutput = 0.707;
     //3 things it can do:
-    //    - recieve signal from mixer channels
-    //    - provide a range of spacial effects from ambience to halls
-    //    - control level to blend into main audio signal
+    //    - apply reverb to signal
+    //    - adjust reverb time
+    //    - adjust reverb pre-delay
 };
 /*
 
@@ -603,12 +640,16 @@ Thing 10) Audio Mixer
 */
 struct AudioMixer
 {
-    //5 properties:
-    //    - Audio Input
-    //    - Audio Channel
-    //    - Channel EQ
-    //    - Channel Dynamics
-    //    - Reverb
+    //Audio Input
+    AudioInput audioInput;
+    //Audio Channel
+    AudioChannel audioChannel;
+    //Channel EQ
+    ChannelEQ channelEQ;
+    //Channel Dynamics
+    ChannelDynamics channelDynamics;
+    //Reverb
+    Reverb reverb;
     //3 things it can do:
     //    - proces audio channels
     //    - balance and sum audio channels
