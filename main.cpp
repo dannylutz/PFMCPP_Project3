@@ -486,7 +486,7 @@ struct SamplePlayer
     //loop end sample index
     int loopEnd = 86500;
 
-    struct SampleProperties
+    struct Sample
     {
         //sample rate of audio file
         double sampleRate = 44100.0;
@@ -500,12 +500,12 @@ struct SamplePlayer
         int index = 0;
 
         //3 member functions:
-        //return sample rate
-        int getSampleRate();
-        //return bit depth
-        int getBitDepth();
-        //return length
-        double getLength();
+        //return sample properties string
+        std::string printSampleProperties(double sampleRate, int channels, int bitDepth, double length, int index); //returns a string with all sample properties
+        //modulate internal sample rate with sine wave
+        void modulateSampleRate(double sampleRate, int waveform = 0, double frequency);
+        //reduce bit depth by one half
+        void reduceBitDepth(int bitDepth, double bitDepthReduction = 0.5);
     };
 
     //3 things it can do:
@@ -598,11 +598,11 @@ struct AudioInput
 
         //3 member functions:
         //return sample rate
-        int getSampleRate();
-        //return bit depth
-        int getBitDepth();
-        //return audio class ID
-        double getAudioClassID();
+        int getSampleRate(); //returns sample rate
+        //set audio device and properties
+        void setAudioDevice(int channels, int bufferSize, int audioDeviceID = 0);
+        //return audio properties string
+        std:string getAudioProperties(int channels, int sampleRate, int bitDepth, int bufferSize, int classID); //returns a string with all audio properties
     };
 
     //3 things it can do:
