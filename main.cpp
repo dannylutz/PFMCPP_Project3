@@ -458,6 +458,13 @@ Thing 1: Simple Oscillator
     - generate low frequencies to modulate other devices
     - accept 'control voltage' from other sources
 
+*/
+struct SimpleOscillator
+{
+
+};
+/*
+
 Thing 2: Sample Player
 5 properties:
     - audio file (string)
@@ -469,6 +476,13 @@ Thing 2: Sample Player
     - play sample
     - loop sample
     - load sample
+
+*/
+struct SamplePlayer
+{
+
+};
+/*
 
 Thing 3: ADR Amp Envelope
 5 properties:
@@ -482,6 +496,13 @@ Thing 3: ADR Amp Envelope
     - apply envelope to audio input via internal amplifier
     - accept trigger signals
 
+*/
+struct SimpleOscillator
+{
+
+};
+/*
+
 Thing 4: Saturating Flter
 5 properties:
     - filter type (unsigned int) //enum
@@ -493,6 +514,13 @@ Thing 4: Saturating Flter
     - high-pass filter audio signals
     - low-pass filter audio signals
     - apply harmonic saturation to audio signals
+
+*/
+struct SaturatingFilter
+{
+
+};
+/*
 
 Thing 5: Audio Input
 5 properties:
@@ -506,6 +534,13 @@ Thing 5: Audio Input
     - process incoming signal
     - invert polarity of incoming signal
 
+*/
+struct AudioInput
+{
+
+};
+/*
+
 Thing 6: Audio Channel
 5 properties:
     - stereo position (double)
@@ -517,6 +552,13 @@ Thing 6: Audio Channel
     - control the volume of a channel
     - control the stereo position of a channel
     - mute channel from summed output
+
+*/
+struct AudioChannel
+{
+
+};
+/*
 
 Thing 7: Channel EQ
 5 properties:
@@ -530,6 +572,13 @@ Thing 7: Channel EQ
     - select low and high frequencies
     - boost or cut selected frequencies
 
+*/
+struct ChannelEQ
+{
+
+};
+/*
+
 Thing 8: Channel Dynamics
 5 properties:
     1) compressor threshold (double)
@@ -541,6 +590,13 @@ Thing 8: Channel Dynamics
     - reduce dynamic range through compression
     - increase dynamic range through expansion
     - use the range control to turn the gate into an expander
+
+*/
+struct ChannelDynamics
+{
+
+};
+/*
 
 Thing 9: Reverb
 5 properties:
@@ -554,6 +610,13 @@ Thing 9: Reverb
     - provide a range of spacial effects from ambience to halls
     - control level to blend into main audio signal
 
+*/
+struct Reverb
+{
+
+};
+/*
+
 Thing 10) Audio Mixer
 5 properties:
     - Audio Input
@@ -565,6 +628,13 @@ Thing 10) Audio Mixer
     - proces audio channels
     - balance and sum audio channels
     - apply parallel effects selectively
+
+*/
+struct AudioMixer
+{
+
+};
+/*
 
 ====================================================================
 */
