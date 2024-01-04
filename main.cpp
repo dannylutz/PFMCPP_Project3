@@ -449,14 +449,14 @@ MOVE THEM to the space below this block comment and put them in numerical order
 Thing 1: Simple Oscillator
 5 properties:
     1) frequency (double)
-    2) waveform (unsigned int)
+    2) waveform (unsigned int) //enum
     3) octave (int)
     4) drift (double)
     5) output (double)
 3 things it can do:
     1) generate audio rate frequencies
     2) generate low frequencies to modulate other devices
-    3) accept control voltage from other sources
+    3) accept 'control voltage' from other sources
 
 Thing 2: Sample Player
 5 properties:
@@ -478,13 +478,13 @@ Thing 3: ADR Amp Envelope
     4) polarity (unsigned int)
     5) amplifier envelope amount (double)
 3 things it can do:
-    1) generate control voltages 
+    1) generate 'control voltages'
     2) apply envelope to audio input via internal amplifier
     3) accept trigger signals
 
 Thing 4: Saturating Flter
 5 properties:
-    1) filter type (unsigned int)
+    1) filter type (unsigned int) //enum
     2) cutoff frequency (double)
     3) resonance (double)
     4) saturation amount (double)
@@ -497,7 +497,7 @@ Thing 4: Saturating Flter
 Thing 5: Audio Input
 5 properties:
     1) amount of amplitude (double)
-    2) number of channels (unsigned int)
+    2) number of channels (bool)
     3) hpf cutoff frequency (double)
     4) amount of saturation (double)
     5) polarity (bool)
@@ -516,12 +516,12 @@ Thing 6: Audio Channel
 3 things it can do:
     1) control the volume of a channel
     2) control the stereo position of a channel
-    3) control the mute of all other audio channels
+    3) mute channel from summed output
 
 Thing 7: Channel EQ
 5 properties:
-    1) high-pass frquency (double)
-    2) high frequenecy selecttion (double)
+    1) high-pass frequency (double)
+    2) high frequenecy selection (double)
     3) high frequency gain (double)
     4) low freuqency selecttion (double)
     5) low frequency gain (double)
@@ -544,7 +544,7 @@ Thing 8: Channel Dynamics
 
 Thing 9: Reverb
 5 properties:
-    1) reverb type (int)
+    1) reverb type (int) // enum
     2) reverb time (double)
     3) reverb decay (double)
     4) dampening (double)
