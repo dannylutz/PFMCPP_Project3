@@ -501,7 +501,7 @@ struct SamplePlayer
 
         //3 member functions:
         std::string printSample(double sampleRate, int channels, int bitDepth, double length, int index); //returns a string with all sample properties
-        void modulateSampleRate(double sampleRate, double frequency, int waveform = 0);
+        void modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleOscillator); //modulates sample rate of sample);
         void reduceBitDepth(int bitDepth, double bitDepthReduction = 0.5);
     };
 
@@ -595,11 +595,11 @@ struct AudioInput
 
         //3 member functions:
         //return sample rate
-        int getSampleRate(); //returns sample rate
+        int getSampleRate(AudioInput audioInput); //returns sample rate
         //set audio device and properties
         void setAudioDevice(int channels, int bufferSize, int audioDeviceID = 0);
         //return audio properties string
-        std::string getAudioProps(int channels, int sampleRate, int bitDepth, int bufferSize, int classID); //returns a string with all audio properties
+        std::string getAudioProps(AudioInput audioInput); //returns a string with all audio properties
     };
 
     //3 things it can do:
@@ -729,11 +729,11 @@ struct AudioMixer
 
     //3 things it can do:
     //position audio channel
-    void positionAudioChannel(double position);
+    void positionAudioChannel(int channelIndex, double position);
     //apply parallel effects selectively
-    void applyParallelEffects(std::string channelName, double amount);  
+    void applyParallelEffects(std::string channelName, int channelIndex, double amount);  
     // process audio channels
-    void processSample();
+    void processChannel(int channelIndex, double amount);
 };
 /*
 
