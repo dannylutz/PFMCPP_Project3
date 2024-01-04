@@ -497,7 +497,7 @@ Thing 3: ADR Amp Envelope
     - accept trigger signals
 
 */
-struct SimpleOscillator
+struct ADRAmpEnvelope
 {
 
 };
