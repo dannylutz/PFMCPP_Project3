@@ -472,7 +472,7 @@ Thing 2: Sample Player
 struct SamplePlayer
 {
     //audio file loaded
-    audioFile = "./samples/sample.wav";
+    std::string audioFile = "./samples/sample.wav";
     //transpose value of sample
     int transpose = 0;
     //loop state of sample
@@ -527,7 +527,6 @@ struct SaturatingFilter
     //    - filter audio input
     //    - apply saturation to audio input
     //    - adjust output level
-};
 };
 /*
 
