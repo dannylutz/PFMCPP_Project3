@@ -687,10 +687,10 @@ struct AudioMixer
     Reverb reverb;
 
     //3 things it can do:
-    //position, balance, and sum audio channels
-    void balanceAndSumChannels(audioChannel.channelVolume, audioChannel.stereoPosition);
+    //position audio channel
+    void positionAudioChannel(doble position);
     //apply parallel effects selectively
-    void applyParallelEffects(audioChannel.reverbSend);  
+    void applyParallelEffects(std::string channelName, double amount);  
     // process audio channels
     void processSample();
 };
