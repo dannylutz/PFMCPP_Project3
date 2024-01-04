@@ -460,10 +460,14 @@ struct SimpleOscillator
     double drift = 0.213;
     //output level of oscillator
     double output = 0.707;
+
     //3 things it can do:
-    //    - generate audio rate frequencies
+    //generate audio rate frequencies
+    void setOscillatorFrequency(double frequency);
     //    - generate low frequencies to modulate other devices
+    void sendOutputToOtherDevices(double output);
     //    - accept 'control voltage' from other sources
+    void acceptControlVoltage(bool externalCV);
 };
 /*
 
@@ -481,10 +485,14 @@ struct SamplePlayer
     int loopStart = 12790;
     //loop end sample index
     int loopEnd = 86500;
+    
     //3 things it can do:
-    //    - play sample
-    //    - loop sample
-    //    - load sample
+    //load sample
+    void loadSample(std::string audioFile);
+    //play sample
+    void playSample();
+    //loop sample
+    void loopSample();
 };
 /*
 
@@ -502,10 +510,14 @@ struct ADRAmpEnvelope
     unsigned int polarity = 0;
     //amplifier envelope amount
     double amount = 0.707;
+
     //3 things it can do:
-    //    - generate 'control voltages'
-    //    - apply envelope to audio input via internal amplifier
-    //    - accept trigger signals
+    //generate 'control voltages'
+    void sendOutputToOtherDevices(double output);
+    //apply envelope to audio input via internal amplifier
+    void applyEnvelopeToAudioInput(double input);
+    //accept trigger signals
+    void listenForTrigger();
 };
 /*
 
@@ -523,10 +535,14 @@ struct SaturatingFilter
     double drive = 0.5;
     //filter output level
     double output = 0.707;
+
     //3 things it can do:
-    //    - filter audio input
-    //    - apply saturation to audio input
-    //    - adjust output level
+    //filter audio input
+    void setCutoff(double cutoff);
+    //apply saturation to audio input
+    void setDrive(double drive);
+    //adjust output level
+    void adjustOutputLevel(double output);
 };
 /*
 
@@ -544,10 +560,14 @@ struct AudioInput
     double saturation = 0.5;
     //polarity of input (true == inverted)
     bool polarity = true;
+
     //3 things it can do:
-    //    - ajust incoming signal amplitude
-    //    - process incoming signal
-    //    - invert polarity of incoming signal
+    //ajust incoming signal amplitude
+    void setInputAmplitude(double amplitude);
+    //enable or diable processing incoming signal
+    void processInputStream(bool process);
+    //invert polarity of incoming signal
+    void invertInputPolarity(bool polarity);
 };
 /*
 
@@ -560,15 +580,19 @@ struct AudioChannel
     //channel volume
     double channelVolume = 0.707;
     //channel name
-    std::string channelName = "channel 1";
+    std::string channelName = "ch 1";
     //channel mute state
     bool channelMute = false;
     //channel send amount to reverb
     double reverbSend = 0.5;
+
     //3 things it can do:
-    //    - control the volume of a channel
-    //    - control the stereo position of a channel
-    //    - mute channel from summed output
+    //control the volume of a channel
+    void setVolume(double volume);
+    //control the stereo position of a channel
+    void setStereoPosition(double position);
+    //mute channel from summed output
+    void muteChannel(bool mute);
 };
 /*
 
@@ -585,11 +609,15 @@ struct ChannelEQ
     //low freuqency selection in Hz
     double lowFrequencySelection = 245.45;
     //low frequency gain in dB
-    double lowFrequencyGain = 0.5;  
+    double lowFrequencyGain = 0.5;
+
     //3 things it can do:
-    //    - high-pass filter signal
-    //    - select low and high frequencies
-    //    - boost or cut selected frequencies
+    //high-pass filter signal
+    void setHighPassFrequency(double highPassFrequency);
+    //select low frequency to boost/cut
+    void setLowFrequencySelection(double lowFrequencySelection);
+    //boost or cut selected frequencies
+    void setLowFrequencyGain(double lowFrequencyGain);
 };
 /*
 
@@ -607,10 +635,14 @@ struct ChannelDynamics
     double compressorRelease = 0.68;
     //compressor makeup gain in dB
     double compressorMakeupGain = 0.5;
+
     //3 things it can do:
-    //    - compress signal
-    //    - adjust attack and release times
-    //    - adjust makeup gain
+    //compress signal below set threshold
+    void setCompressorThreshold(double compressorThreshold);
+    //adjust attack and release times
+    void setCompressorAttack(double compressorAttack);
+    //adjust makeup gain
+    void setCompressorMakeupGain(double compressorMakeupGain);
 };
 /*
 
@@ -628,10 +660,14 @@ struct Reverb
     double reverbDamping = 0.5;
     //reverb output level
     double reverbOutput = 0.707;
+
     //3 things it can do:
-    //    - apply reverb to signal
-    //    - adjust reverb time
-    //    - adjust reverb pre-delay
+    //apply reverb to signal
+    void processChannelStream(int channel, double amount);
+    //adjust reverb time
+    void setReverbTime(double reverbTime);
+    //adjust reverb pre-delay
+    void setReverbPreDelay(double reverbPreDelay);
 };
 /*
 
@@ -649,10 +685,14 @@ struct AudioMixer
     ChannelDynamics channelDynamics;
     //Reverb
     Reverb reverb;
+
     //3 things it can do:
-    //    - proces audio channels
-    //    - balance and sum audio channels
-    //    - apply parallel effects selectively
+    //position, balance, and sum audio channels
+    void balanceAndSumChannels(audioChannel.channelVolume, audioChannel.stereoPosition);
+    //apply parallel effects selectively
+    void applyParallelEffects(audioChannel.reverbSend);  
+    // process audio channels
+    void processSample();
 };
 /*
 
