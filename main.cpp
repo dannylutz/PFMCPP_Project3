@@ -448,87 +448,87 @@ MOVE THEM to the space below this block comment and put them in numerical order
 
 Thing 1: Simple Oscillator
 5 properties:
-    1) frequency (double)
-    2) waveform (unsigned int) //enum
-    3) octave (int)
-    4) drift (double)
-    5) output (double)
+    - frequency (double)
+    - waveform (unsigned int) //enum
+    - octave (int)
+    - drift (double)
+    - output (double)
 3 things it can do:
-    1) generate audio rate frequencies
-    2) generate low frequencies to modulate other devices
-    3) accept 'control voltage' from other sources
+    - generate audio rate frequencies
+    - generate low frequencies to modulate other devices
+    - accept 'control voltage' from other sources
 
 Thing 2: Sample Player
 5 properties:
-    1) audio file (string)
-    2) transpose sample (int)
-    3) loop toggle (bool)
-    4) loop start sample index (int)
-    5) loop end sample index (int)
+    - audio file (string)
+    - transpose sample (int)
+    - loop toggle (bool)
+    - loop start sample index (int)
+    - loop end sample index (int)
 3 things it can do:
-    1) play sample
-    2) loop sample
-    3) load sample
+    - play sample
+    - loop sample
+    - load sample
 
 Thing 3: ADR Amp Envelope
 5 properties:
-    1) attack time (double)
-    2) decay time (double))
-    3) release time (double)
-    4) polarity (unsigned int)
-    5) amplifier envelope amount (double)
+    - attack time (double)
+    - decay time (double))
+    - release time (double)
+    - polarity (unsigned int)
+    - amplifier envelope amount (double)
 3 things it can do:
-    1) generate 'control voltages'
-    2) apply envelope to audio input via internal amplifier
-    3) accept trigger signals
+    - generate 'control voltages'
+    - apply envelope to audio input via internal amplifier
+    - accept trigger signals
 
 Thing 4: Saturating Flter
 5 properties:
-    1) filter type (unsigned int) //enum
-    2) cutoff frequency (double)
-    3) resonance (double)
-    4) saturation amount (double)
-    5) number of poles (unsigned int)
+    - filter type (unsigned int) //enum
+    - cutoff frequency (double)
+    - resonance (double)
+    - saturation amount (double)
+    - number of poles (unsigned int)
 3 things it can do:
-    1) high-pass filter audio signals
-    2) low-pass filter audio signals
-    3) apply harmonic saturation to audio signals
+    - high-pass filter audio signals
+    - low-pass filter audio signals
+    - apply harmonic saturation to audio signals
 
 Thing 5: Audio Input
 5 properties:
-    1) amount of amplitude (double)
-    2) number of channels (bool)
-    3) hpf cutoff frequency (double)
-    4) amount of saturation (double)
-    5) polarity (bool)
+    - amount of amplitude (double)
+    - number of channels (bool)
+    - hpf cutoff frequency (double)
+    - amount of saturation (double)
+    - polarity (bool)
 3 things it can do:
-    1) ajust incoming signal amplitude
-    2) process incoming signal
-    3) invert polarity of incoming signal
+    - ajust incoming signal amplitude
+    - process incoming signal
+    - invert polarity of incoming signal
 
 Thing 6: Audio Channel
 5 properties:
-    1) stereo position (double)
-    2) channel volume (double)
-    3) channel name (string)
-    4) channel mute (bool)
-    5) channel send amount to reverb (double)
+    - stereo position (double)
+    - channel volume (double)
+    - channel name (string)
+    - channel mute (bool)
+    - channel send amount to reverb (double)
 3 things it can do:
-    1) control the volume of a channel
-    2) control the stereo position of a channel
-    3) mute channel from summed output
+    - control the volume of a channel
+    - control the stereo position of a channel
+    - mute channel from summed output
 
 Thing 7: Channel EQ
 5 properties:
-    1) high-pass frequency (double)
-    2) high frequenecy selection (double)
-    3) high frequency gain (double)
-    4) low freuqency selecttion (double)
-    5) low frequency gain (double)
+    - high-pass frequency (double)
+    - high frequenecy selection (double)
+    - high frequency gain (double)
+    - low freuqency selecttion (double)
+    - low frequency gain (double)
 3 things it can do:
-    1) high-pass filter signal
-    2) select low and high frequencies
-    3) boost or cut selected frequencies
+    - high-pass filter signal
+    - select low and high frequencies
+    - boost or cut selected frequencies
 
 Thing 8: Channel Dynamics
 5 properties:
@@ -538,33 +538,33 @@ Thing 8: Channel Dynamics
     4) gate/expander range (double)
     5) gate threshold (double)
 3 things it can do:
-    1) reduce dynamic range through compression
-    2) increase dynamic range through expansion
-    3) use the range control to turn the gate into an expander
+    - reduce dynamic range through compression
+    - increase dynamic range through expansion
+    - use the range control to turn the gate into an expander
 
 Thing 9: Reverb
 5 properties:
-    1) reverb type (int) // enum
-    2) reverb time (double)
-    3) reverb decay (double)
-    4) dampening (double)
-    4) reverb level (double)
+    - reverb type (int) // enum
+    - reverb time (double)
+    - reverb decay (double)
+    - dampening (double)
+    - reverb level (double)
 3 things it can do:
-    1) recieve signal from mixer channels
-    2) provide a range of spacial effects from ambience to halls
-    3) control level to blend into main audio signal
+    - recieve signal from mixer channels
+    - provide a range of spacial effects from ambience to halls
+    - control level to blend into main audio signal
 
 Thing 10) Audio Mixer
 5 properties:
-    1) Audio Input
-    2) Audio Channel
-    3) Channel EQ
-    4) Channel Dynamics
-    5) Reverb
+    - Audio Input
+    - Audio Channel
+    - Channel EQ
+    - Channel Dynamics
+    - Reverb
 3 things it can do:
-    1) proces audio channels
-    2) balance and sum audio channels
-    3) apply parallel effects selectively
+    - proces audio channels
+    - balance and sum audio channels
+    - apply parallel effects selectively
 
 ====================================================================
 */
