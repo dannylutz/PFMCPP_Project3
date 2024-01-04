@@ -688,7 +688,7 @@ struct AudioMixer
 
     //3 things it can do:
     //position audio channel
-    void positionAudioChannel(doble position);
+    void positionAudioChannel(double position);
     //apply parallel effects selectively
     void applyParallelEffects(std::string channelName, double amount);  
     // process audio channels
