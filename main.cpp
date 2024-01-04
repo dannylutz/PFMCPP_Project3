@@ -447,192 +447,172 @@ MOVE THEM to the space below this block comment and put them in numerical order
 ====================================================================
 
 Thing 1: Simple Oscillator
-5 properties:
-    - frequency (double)
-    - waveform (unsigned int) //enum
-    - octave (int)
-    - drift (double)
-    - output (double)
-3 things it can do:
-    - generate audio rate frequencies
-    - generate low frequencies to modulate other devices
-    - accept 'control voltage' from other sources
-
 */
 struct SimpleOscillator
 {
-
+    //5 properties:
+    //    - frequency (double)
+    //    - waveform (unsigned int) //enum
+    //    - octave (int)
+    //    - drift (double)
+    //    - output (double)
+    //3 things it can do:
+    //    - generate audio rate frequencies
+    //    - generate low frequencies to modulate other devices
+    //    - accept 'control voltage' from other sources
 };
 /*
 
 Thing 2: Sample Player
-5 properties:
-    - audio file (string)
-    - transpose sample (int)
-    - loop toggle (bool)
-    - loop start sample index (int)
-    - loop end sample index (int)
-3 things it can do:
-    - play sample
-    - loop sample
-    - load sample
-
 */
 struct SamplePlayer
 {
-
+    //5 properties:
+    //    - audio file (string)
+    //    - transpose sample (int)
+    //    - loop toggle (bool)
+    //    - loop start sample index (int)
+    //    - loop end sample index (int)
+    //3 things it can do:
+    //    - play sample
+    //    - loop sample
+    //    - load sample
 };
 /*
 
 Thing 3: ADR Amp Envelope
-5 properties:
-    - attack time (double)
-    - decay time (double))
-    - release time (double)
-    - polarity (unsigned int)
-    - amplifier envelope amount (double)
-3 things it can do:
-    - generate 'control voltages'
-    - apply envelope to audio input via internal amplifier
-    - accept trigger signals
-
 */
 struct ADRAmpEnvelope
 {
-
+    //5 properties:
+    //    - attack time (double)
+    //    - decay time (double))
+    //    - release time (double)
+    //    - polarity (unsigned int)
+    //    - amplifier envelope amount (double)
+    //3 things it can do:
+    //    - generate 'control voltages'
+    //    - apply envelope to audio input via internal amplifier
+    //    - accept trigger signals
 };
 /*
 
 Thing 4: Saturating Flter
-5 properties:
-    - filter type (unsigned int) //enum
-    - cutoff frequency (double)
-    - resonance (double)
-    - saturation amount (double)
-    - number of poles (unsigned int)
-3 things it can do:
-    - high-pass filter audio signals
-    - low-pass filter audio signals
-    - apply harmonic saturation to audio signals
-
 */
 struct SaturatingFilter
 {
-
+    //5 properties:
+    //    - filter type (unsigned int) //enum
+    //    - cutoff frequency (double)
+    //    - resonance (double)
+    //    - saturation amount (double)
+    //    - number of poles (unsigned int)
+    //3 things it can do:
+    //    - high-pass filter audio signals
+    //    - low-pass filter audio signals
+    //    - apply harmonic saturation to audio signals
 };
 /*
 
 Thing 5: Audio Input
-5 properties:
-    - amount of amplitude (double)
-    - number of channels (bool)
-    - hpf cutoff frequency (double)
-    - amount of saturation (double)
-    - polarity (bool)
-3 things it can do:
-    - ajust incoming signal amplitude
-    - process incoming signal
-    - invert polarity of incoming signal
-
 */
 struct AudioInput
 {
-
+    //5 properties:
+    //    - amount of amplitude (double)
+    //    - number of channels (bool)
+    //    - hpf cutoff frequency (double)
+    //    - amount of saturation (double)
+    //    - polarity (bool)
+    //3 things it can do:
+    //    - ajust incoming signal amplitude
+    //    - process incoming signal
+    //    - invert polarity of incoming signal
 };
 /*
 
 Thing 6: Audio Channel
-5 properties:
-    - stereo position (double)
-    - channel volume (double)
-    - channel name (string)
-    - channel mute (bool)
-    - channel send amount to reverb (double)
-3 things it can do:
-    - control the volume of a channel
-    - control the stereo position of a channel
-    - mute channel from summed output
-
 */
 struct AudioChannel
 {
-
+    //5 properties:
+    //    - stereo position (double)
+    //    - channel volume (double)
+    //    - channel name (string)
+    //    - channel mute (bool)
+    //    - channel send amount to reverb (double)
+    //3 things it can do:
+    //    - control the volume of a channel
+    //    - control the stereo position of a channel
+    //    - mute channel from summed output
 };
 /*
 
 Thing 7: Channel EQ
-5 properties:
-    - high-pass frequency (double)
-    - high frequenecy selection (double)
-    - high frequency gain (double)
-    - low freuqency selecttion (double)
-    - low frequency gain (double)
-3 things it can do:
-    - high-pass filter signal
-    - select low and high frequencies
-    - boost or cut selected frequencies
-
 */
 struct ChannelEQ
 {
-
+    //5 properties:
+    //    - high-pass frequency (double)
+    //    - high frequenecy selection (double)
+    //    - high frequency gain (double)
+    //    - low freuqency selecttion (double)
+    //    - low frequency gain (double)
+    //3 things it can do:
+    //    - high-pass filter signal
+    //    - select low and high frequencies
+    //    - boost or cut selected frequencies
 };
 /*
 
 Thing 8: Channel Dynamics
-5 properties:
-    1) compressor threshold (double)
-    2) compresor ratio (unsigned int)
-    3) compressor speed (double)
-    4) gate/expander range (double)
-    5) gate threshold (double)
-3 things it can do:
-    - reduce dynamic range through compression
-    - increase dynamic range through expansion
-    - use the range control to turn the gate into an expander
-
 */
 struct ChannelDynamics
 {
-
+    //5 properties:
+    //    - compressor threshold (double)
+    //    - compresor ratio (unsigned int)
+    //    - compressor speed (double)
+    //    - gate/expander range (double)
+    //    - gate threshold (double)
+    //3 things it can do:
+    //    - reduce dynamic range through compression
+    //    - increase dynamic range through expansion
+    //    - use the range control to turn the gate into an expander
 };
 /*
 
 Thing 9: Reverb
-5 properties:
-    - reverb type (int) // enum
-    - reverb time (double)
-    - reverb decay (double)
-    - dampening (double)
-    - reverb level (double)
-3 things it can do:
-    - recieve signal from mixer channels
-    - provide a range of spacial effects from ambience to halls
-    - control level to blend into main audio signal
-
 */
 struct Reverb
 {
-
+    //5 properties:
+    //    - reverb type (int) // enum
+    //    - reverb time (double)
+    //    - reverb decay (double)
+    //    - dampening (double)
+    //    - reverb level (double)
+    //3 things it can do:
+    //    - recieve signal from mixer channels
+    //    - provide a range of spacial effects from ambience to halls
+    //    - control level to blend into main audio signal
 };
 /*
 
 Thing 10) Audio Mixer
-5 properties:
-    - Audio Input
-    - Audio Channel
-    - Channel EQ
-    - Channel Dynamics
-    - Reverb
-3 things it can do:
-    - proces audio channels
-    - balance and sum audio channels
-    - apply parallel effects selectively
-
 */
 struct AudioMixer
 {
-
+    //5 properties:
+    //    - Audio Input
+    //    - Audio Channel
+    //    - Channel EQ
+    //    - Channel Dynamics
+    //    - Reverb
+    //3 things it can do:
+    //    - proces audio channels
+    //    - balance and sum audio channels
+    //    - apply parallel effects selectively
 };
 /*
 
