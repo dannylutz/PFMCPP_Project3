@@ -500,11 +500,8 @@ struct SamplePlayer
         int index = 0;
 
         //3 member functions:
-        //return sample properties string
-        std::string printSampleProperties(double sampleRate, int channels, int bitDepth, double length, int index); //returns a string with all sample properties
-        //modulate internal sample rate with sine wave
-        void modulateSampleRate(double sampleRate, int waveform = 0, double frequency);
-        //reduce bit depth by one half
+        std::string printSample(double sampleRate, int channels, int bitDepth, double length, int index); //returns a string with all sample properties
+        void modulateSampleRate(double sampleRate, double frequency, int waveform = 0);
         void reduceBitDepth(int bitDepth, double bitDepthReduction = 0.5);
     };
 
@@ -602,7 +599,7 @@ struct AudioInput
         //set audio device and properties
         void setAudioDevice(int channels, int bufferSize, int audioDeviceID = 0);
         //return audio properties string
-        std:string getAudioProperties(int channels, int sampleRate, int bitDepth, int bufferSize, int classID); //returns a string with all audio properties
+        std::string getAudioProps(int channels, int sampleRate, int bitDepth, int bufferSize, int classID); //returns a string with all audio properties
     };
 
     //3 things it can do:
