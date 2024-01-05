@@ -108,9 +108,50 @@ struct CarWash
     You'll need to insert the Person struct from the video in the space below.
  */
 
+struct Person
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
 
+    struct Foot
+    {
+        void stepForward();
+        int stepSize();
+    };
 
+    Foot leftFoot;
+    Foot rightFoot;
 
+    void run( int, bool);
+};
+
+void Person::Foot::stepForward()
+{
+    std::cout << "Stepped forward" << std::endl;
+}
+
+int Person::Foot::stepSize()
+{
+    return 1;
+}
+
+void Person::run(int howNotSlow, bool startWithLeftFoot)
+{
+    if (startWithLeftFoot)
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+}
 
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
@@ -135,293 +176,193 @@ struct CarWash
 paste your code below
 ====================================================================
 
-Thing 1: Simple Oscillator
 */
 struct SimpleOscillator
 {
-    //frequency of oscllator in Hz
+    
     double frequency = 440.0;
-    //waveform selected
     unsigned int waveform = 0;
-    //octave of oscillator
     int octave = 0;
-    //drift applied to oscillator pitch
     double drift = 0.213;
-    //output level of oscillator
     double output = 0.707;
 
-    //3 things it can do:
-    //generate audio rate frequencies
     void setOscillatorFrequency(double frequency);
-    //    - generate low frequencies to modulate other devices
     void sendOutputToOtherDevices(double output);
-    //    - accept 'control voltage' from other sources
     void acceptControlVoltage(bool externalCV);
 };
-/*
 
-Thing 2: Sample Player
-*/
+void SimpleOscillator::setOscillatorFrequency(double frequency)
+{
+    double newFrequency = frequency;
+}
+
+void SimpleOscillator::sendOutputToOtherDevices(double output)
+{
+    double newOutput = output;
+}
+
+void SimpleOscillator::acceptControlVoltage(bool externalCV)
+{
+    if (externalCV)
+    {
+        std::cout << "external CV enabled" << std::endl;
+    }
+    else
+    {
+        std::cout << "external CV not disabled" << std::endl;
+    }
+}
+
 struct SamplePlayer
 {
-    //audio file loaded
     std::string audioFile = "./samples/sample.wav";
-    //transpose value of sample
     int transpose = 0;
-    //loop state of sample
     bool loop = false;
-    //loop start sample index
     int loopStart = 12790;
-    //loop end sample index
     int loopEnd = 86500;
 
     struct Sample
     {
-        //sample rate of audio file
         double sampleRate = 44100.0;
-        //number of channels in audio file
         int channels = 2;
-        //bit depth of audio file
         int bitDepth = 16;
-        //length of audio file in milliseconds
         double length = 2000.0;
-        //sample index
         int index = 0;
 
         //3 member functions:
-        std::string printSample(double sampleRate, int channels, int bitDepth, double length, int index); //returns a string with all sample properties
-        void modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleOscillator); //modulates sample rate of sample);
+        std::string printSample(double sampleRate, int channels, int bitDepth, double length, int index);
+        void modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleOscillator); 
         void reduceBitDepth(int bitDepth, double bitDepthReduction = 0.5);
     };
 
-    //3 things it can do:
-    //load sample
     void loadSample(std::string audioFile);
-    //play sample
     void playSample();
-    //loop sample
     void loopSample();
 };
-/*
 
-Thing 3: ADR Amp Envelope
-*/
+void SamplePlayer::loadSample(std::string audioFile)
+{
+    Sample sample;
+    sample.audioFile = audioFile;
+}
+
 struct ADRAmpEnvelope
 {
-    //attack time in seconds
     double attack = 0.012;
-    //decay time in seconds
     double decay = 0.145;
-    //release time in seconds
     double release = 0.68;
-    //polarity of envelope
     unsigned int polarity = 0;
-    //amplifier envelope amount
     double amount = 0.707;
 
-    //3 things it can do:
-    //generate 'control voltages'
     void sendOutputToOtherDevices(double output);
-    //apply envelope to audio input via internal amplifier
     void applyEnvelopeToAudioInput(double input);
-    //accept trigger signals
     void listenForTrigger();
 };
-/*
 
-Thing 4: Saturating Flter
-*/
 struct SaturatingFilter
 {
-    //filter type
     unsigned int filterType = 0;
-    //filter cutoff frequency in Hz
     double cutoff = 1004.75;
-    //filter resonance
     double resonance = 0.99;
-    //filter drive
     double drive = 0.5;
-    //filter output level
     double output = 0.707;
 
-    //3 things it can do:
-    //filter audio input
     void setCutoff(double cutoff);
-    //apply saturation to audio input
     void setDrive(double drive);
-    //adjust output level
     void adjustOutputLevel(double output);
 };
-/*
 
-Thing 5: Audio Input
-*/
 struct AudioInput
 {
-    //amount of amplitude
+    
     double amplitude = 0.707;
-    //number of channels
     bool stereo = true;
-    //hpf cutoff frequency in kHz
     double hpfCutoff = 20.0;
-    //amount of saturation
     double saturation = 0.5;
-    //polarity of input (true == inverted)
     bool polarity = true;
 
     struct AudioInputProperties
     {
-        //sample rate of audio stream
         double sampleRate = 44100.0;
-        //number of channels in audio stream
         int channels = 2;
-        //bit depth of audio stream
         int bitDepth = 16;
-        //buffer size of audio stream
         int bufferSize = 1024;
-        //audio class ID
         int classID = 2;
 
-        //3 member functions:
-        //return sample rate
-        int getSampleRate(AudioInput audioInput); //returns sample rate
-        //set audio device and properties
+   
+        int getSampleRate(AudioInput audioInput);
         void setAudioDevice(int channels, int bufferSize, int audioDeviceID = 0);
-        //return audio properties string
-        std::string getAudioProps(AudioInput audioInput); //returns a string with all audio properties
+        std::string getAudioProps(AudioInput audioInput);
     };
 
-    //3 things it can do:
-    //ajust incoming signal amplitude
     void setInputAmplitude(double amplitude);
-    //enable or diable processing incoming signal
     void processInputStream(bool process);
-    //invert polarity of incoming signal
     void invertInputPolarity(bool polarity);
 };
-/*
 
-Thing 6: Audio Channel
-*/
 struct AudioChannel
 {
-    //stereo position
     double  stereoPosition = 0.5;
-    //channel volume
     double channelVolume = 0.707;
-    //channel name
     std::string channelName = "ch 1";
-    //channel mute state
     bool channelMute = false;
-    //channel send amount to reverb
     double reverbSend = 0.5;
 
-    //3 things it can do:
-    //control the volume of a channel
+
     void setVolume(double volume);
-    //control the stereo position of a channel
     void setStereoPosition(double position);
-    //mute channel from summed output
     void muteChannel(bool mute);
 };
-/*
 
-Thing 7: Channel EQ
-*/
 struct ChannelEQ
 {
-    //high-pass frequency in Hz
     double highPassFrequency = 20.0;
-    //high frequenecy selection in kHz
     double highFrequencySelection = 8.2;
-    //high frequency gain in dB
     double highFrequencyGain = 0.5;
-    //low freuqency selection in Hz
     double lowFrequencySelection = 245.45;
-    //low frequency gain in dB
     double lowFrequencyGain = 0.5;
 
-    //3 things it can do:
-    //high-pass filter signal
     void setHighPassFrequency(double highPassFrequency);
-    //select low frequency to boost/cut
     void setLowFrequencySelection(double lowFrequencySelection);
-    //boost or cut selected frequencies
     void setLowFrequencyGain(double lowFrequencyGain);
 };
-/*
 
-Thing 8: Channel Dynamics
-*/
 struct ChannelDynamics
 {
-    //compressor threshold in dB
     double compressorThreshold = -12.0;
-    //compressor ratio
     double compressorRatio = 2.0;
-    //compressor attack time in seconds
     double compressorAttack = 0.012;
-    //compressor release time in seconds
     double compressorRelease = 0.68;
-    //compressor makeup gain in dB
     double compressorMakeupGain = 0.5;
 
-    //3 things it can do:
-    //compress signal below set threshold
     void setCompressorThreshold(double compressorThreshold);
-    //adjust attack and release times
     void setCompressorAttack(double compressorAttack);
-    //adjust makeup gain
     void setCompressorMakeupGain(double compressorMakeupGain);
 };
-/*
 
-Thing 9: Reverb
-*/
 struct Reverb
 {
-    //reverb time in seconds
     double reverbTime = 0.35;
-    //reverb pre-delay in seconds
     double reverbPreDelay = 0.012;
-    //reverb diffusion amount
     double reverbDiffusion = 0.5;
-    //reverb damping amount
     double reverbDamping = 0.5;
-    //reverb output level
     double reverbOutput = 0.707;
 
-    //3 things it can do:
-    //apply reverb to signal
     void processChannelStream(int channel, double amount);
-    //adjust reverb time
     void setReverbTime(double reverbTime);
-    //adjust reverb pre-delay
     void setReverbPreDelay(double reverbPreDelay);
 };
-/*
 
-Thing 10) Audio Mixer
-*/
 struct AudioMixer
 {
-    //Audio Input
     AudioInput audioInput;
-    //Audio Channel
     AudioChannel audioChannel;
-    //Channel EQ
     ChannelEQ channelEQ;
-    //Channel Dynamics
     ChannelDynamics channelDynamics;
-    //Reverb
     Reverb reverb;
 
-    //3 things it can do:
-    //position audio channel
     void positionAudioChannel(int channelIndex, double position);
-    //apply parallel effects selectively
     void applyParallelEffects(std::string channelName, int channelIndex, double amount);  
-    // process audio channels
     void processChannel(int channelIndex, double amount);
 };
 
