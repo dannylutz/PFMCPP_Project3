@@ -19,15 +19,15 @@ You are going to write 10 UDTs in Project3.
 Part1 will be broken up into 5 sub-parts, all on the same branch.
     Part 1a (3 steps): you will learn to think about an object in terms of 
     its sub-parts (sub-objects).
-    
+
     Part 1b (3 steps): you will write 4 un-related UDTs in plain English.
-    
+
     Part 1c (5 steps): you will write 1 UDT in plain English that will be 
     made from 5 related sub-objects.
-    
+
     Part 1d (8 steps): you will write plain-English UDTs for the 5 
     sub-objects that form the UDT defined in Part 1c.
-    
+
     Part 1e (19 steps): you will convert those 10 plain-English UDTs into code 
     that compiles and executes.
 */
@@ -68,7 +68,7 @@ Part 1a - Step 2: Assignment
     - Look at the picture of the car interior (Part1a pic.jpg).  
     - The picture in the list of files on the left in Replit.
     - take note of the different sub-objects that you see in the interior.
-    
+
     Several sub-objects are listed below that can be found in this car's interior.
 
     - you're going to name several things that you'll find on each 
@@ -83,51 +83,51 @@ Main Object: Car Interior
         Name 4 nouns you'll find on the [Sub Object]
             1) paddle shifters
             2) 'cruise control' controls
-            3) 
-            4) 
+            3) audio system controls
+            4) controls for onboard navigation and control panel
         Name 2 actions that the [Sub Object] can do:
-            1) adjust cruise control settings.
-            2)
-        
+            1) adjust cruise control settings
+            2) change volume of audio system
+
     Sub Object: Instrument Cluster
         Name 4 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
-            4)
+            1) spedometer
+            2) gear position indicator
+            3) temperature gauge
+            4) tachometer
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
-    
+            1) display active gear position
+            2) display the speed of the vehicle
+            3) display the RPM of the engine
+
     Sub Object: Environment Controls
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) temperature controls
+            2) fan controls
+            3) air flow mode conrols
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) increase temperature
+            2) decrease fan intensity
+            3) change air flow mode
 
     Sub Object: Infotainment System
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) infotainment power button
+            2) alphanumeric keypad
+            3) audio source selector
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) toggle infotainment power
+            2) enter number
+            3) select audio source
 
     Sub Object: Seat 
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) seat recline control
+            2) seat position control
+            3) seat heat control
         Name 2 actions that the [Sub Object] can do:
-            1)
-            2)
+            1) recline seat
+            2) enable seat heater
 */
 
 /*
@@ -152,7 +152,7 @@ in terms of its sub-objects.
 
 Next you will write 4 un-related UDTs in plain English:
 example:  
- 
+
 Thing: Car Wash   
     5 properties:
         - number of vacuum cleaners
@@ -167,14 +167,14 @@ Thing: Car Wash
 
     Notice that I did not use "has a vacuum cleaner" or "Has 
     eco-friendly cleaning supplies" as one of the properties.
-    
+
     Writing 'has a ___' checks whether or not your object ** has the 
     ability to do something ** or ** has a particular thing **.
     Instead, I wrote "number of vacuum cleaners" and "number of 
     eco-friendly cleaning supplies".  
-    
+
     These are specific objects or amounts. 
-    
+
     In C++ terms this means to I want you to avoid using 'bool' 
     (has a) as a member variable type.
     Instead, prefer the other primitive types.
@@ -196,53 +196,6 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-Thing 1)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 2)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 3)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 4)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
 */
 
 /*
@@ -289,12 +242,12 @@ Example:
 
     Notice that I did not use "has a display" or "Has memory" or 
     "has a cpu" as one of the properties of the CellPhone.
-    
+
     Writing 'has a ___' checks whether or not your object ** has the 
     ability to do something ** or ** has a particular thing **.
     Instead, I wrote "Display" or "CPU".  These are specific 
     objects. 
-    
+
     In C++ terms, this means to I want you to AVOID USING 'bool' 
     (has a) as a member variable type.
     Instead, prefer the other primitive types or custom UDT.
@@ -302,6 +255,22 @@ Example:
     When you choose your 5 smaller parts, remember that each of 
     these 5 Sub Objects will need to be defined with 5 primitive 
     properties and 3 actions EACH.
+
+Example:
+    UDT: Cell Phone
+
+    A Cell Phone is built using the following 5 UDTs:
+        Display
+        Memory
+        CPU
+        Radio
+        Applications
+
+    A Cell Phone has 3 things it can do:
+        make a call
+        send a text
+        run an application.
+
 */
 
 /*
@@ -310,7 +279,7 @@ Part 1c - Step 2: Assignment
 ===================
     - write the name of the primitive type you'll be using after each property in UDTs 1-4 you created in Part 1b:
     - pick properties that can be represented with 'int float double bool char std::string'.
-    
+
 example: 
     Display:
         Number of Pixels (int)
@@ -336,18 +305,6 @@ Part 1c - Step 4: Assignment
 Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
-
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
  */
 
  /*
@@ -434,65 +391,6 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
  */
 
 /*
@@ -510,7 +408,7 @@ Part 1d - Step 4: Assignment
     - write the name of the primitive type you'll be using after each property for UDTs 5 - 9.
     - You already did this for UDTs 1-4 in Part 1c.
     - Pick properties that can be represented with 'int float double bool char std::string'
-    
+
 example: 
     Display:
         Number of Pixels (int)
@@ -545,11 +443,9 @@ MOVE THEM to the space below this block comment and put them in numerical order
     simply CUT and PASTE them in the space provided below:
 */
 
+/*
 
-
-
-
-
+*/
 
 
 /*
@@ -661,7 +557,7 @@ Now that you've made changes, make a commit!
 Be sure to make the commit message meaningful.
 */
 }  //end namespace Part1E_Step3
-  
+
 namespace Part1E_Step5
 {
 /*
@@ -721,14 +617,14 @@ struct CarWash
     float profitPerWeek = 495.95f;               
     //number of cars serviced per day               
     int numberOfCarsServiced = 10;     
-    
+
     //3 things it can do:
     //wash and wax car
     void washAndWaxCar(); 
-    
+
     //charge customer       //NOTE: function parameter is relevant to the work that the function performs
     float chargeCustomer(float discountPercentage); //returns the total amount charged.
-    
+
     //detail the car interior
     void detailInterior();
 };
@@ -765,7 +661,7 @@ struct CarWash
     float profitPerWeek = 495.95f;               
     //number of cars serviced per day               
     int numberOfCarsServiced = 10;     
-    
+
     //this is the nested UDT:
     struct Car                  //Note that the nested type 'Car' is related to the 'CarWash' 
     {
@@ -788,10 +684,10 @@ struct CarWash
     //3 things it can do:
     //wash and wax car
     void washAndWaxCar(); 
-    
+
     //charge customer       //NOTE: function parameter is relevant to the work that the function performs
     float chargeCustomer(float discountPercentage); //returns the total amount charged.
-    
+
     //detail the car interior
     void detailInterior();
 };
@@ -834,7 +730,7 @@ struct CarWash
     float profitPerWeek = 495.95f;               
     //number of cars serviced per day               
     int numberOfCarsServiced = 10;     
-    
+
     struct Car                   
     {
         bool isAPickupTruck = false;
@@ -856,7 +752,7 @@ struct CarWash
     float chargeCustomer(float discountPercentage); 
     //detail interior
     void detailInterior(Car car);
-    
+
     //5) a member variable whose type is a UDT.
     Car carBeingServiced; //Notice that this is written AFTER `struct Car { ... };
 
@@ -881,7 +777,7 @@ struct CarWash
 
         // train their skills
         void trainPlayerSkills(Manager managerA);
-    
+
         Manager teamManager;
     };
 
@@ -898,7 +794,7 @@ struct CarWash
         };
 
         void hireNewManager(Manager newManager);
-    
+
         Manager teamManager;
     };
 
@@ -1008,15 +904,301 @@ Part 1e - Step 19: Request a review
 
 /*
 paste your code below
+====================================================================
+
+Thing 1: Simple Oscillator
 */
+struct SimpleOscillator
+{
+    //frequency of oscllator in Hz
+    double frequency = 440.0;
+    //waveform selected
+    unsigned int waveform = 0;
+    //octave of oscillator
+    int octave = 0;
+    //drift applied to oscillator pitch
+    double drift = 0.213;
+    //output level of oscillator
+    double output = 0.707;
 
+    //3 things it can do:
+    //generate audio rate frequencies
+    void setOscillatorFrequency(double frequency);
+    //    - generate low frequencies to modulate other devices
+    void sendOutputToOtherDevices(double output);
+    //    - accept 'control voltage' from other sources
+    void acceptControlVoltage(bool externalCV);
+};
+/*
 
+Thing 2: Sample Player
+*/
+struct SamplePlayer
+{
+    //audio file loaded
+    std::string audioFile = "./samples/sample.wav";
+    //transpose value of sample
+    int transpose = 0;
+    //loop state of sample
+    bool loop = false;
+    //loop start sample index
+    int loopStart = 12790;
+    //loop end sample index
+    int loopEnd = 86500;
 
+    struct Sample
+    {
+        //sample rate of audio file
+        double sampleRate = 44100.0;
+        //number of channels in audio file
+        int channels = 2;
+        //bit depth of audio file
+        int bitDepth = 16;
+        //length of audio file in milliseconds
+        double length = 2000.0;
+        //sample index
+        int index = 0;
 
+        //3 member functions:
+        std::string printSample(double sampleRate, int channels, int bitDepth, double length, int index); //returns a string with all sample properties
+        void modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleOscillator); //modulates sample rate of sample);
+        void reduceBitDepth(int bitDepth, double bitDepthReduction = 0.5);
+    };
 
+    //3 things it can do:
+    //load sample
+    void loadSample(std::string audioFile);
+    //play sample
+    void playSample();
+    //loop sample
+    void loopSample();
+};
+/*
 
+Thing 3: ADR Amp Envelope
+*/
+struct ADRAmpEnvelope
+{
+    //attack time in seconds
+    double attack = 0.012;
+    //decay time in seconds
+    double decay = 0.145;
+    //release time in seconds
+    double release = 0.68;
+    //polarity of envelope
+    unsigned int polarity = 0;
+    //amplifier envelope amount
+    double amount = 0.707;
 
+    //3 things it can do:
+    //generate 'control voltages'
+    void sendOutputToOtherDevices(double output);
+    //apply envelope to audio input via internal amplifier
+    void applyEnvelopeToAudioInput(double input);
+    //accept trigger signals
+    void listenForTrigger();
+};
+/*
 
+Thing 4: Saturating Flter
+*/
+struct SaturatingFilter
+{
+    //filter type
+    unsigned int filterType = 0;
+    //filter cutoff frequency in Hz
+    double cutoff = 1004.75;
+    //filter resonance
+    double resonance = 0.99;
+    //filter drive
+    double drive = 0.5;
+    //filter output level
+    double output = 0.707;
+
+    //3 things it can do:
+    //filter audio input
+    void setCutoff(double cutoff);
+    //apply saturation to audio input
+    void setDrive(double drive);
+    //adjust output level
+    void adjustOutputLevel(double output);
+};
+/*
+
+Thing 5: Audio Input
+*/
+struct AudioInput
+{
+    //amount of amplitude
+    double amplitude = 0.707;
+    //number of channels
+    bool stereo = true;
+    //hpf cutoff frequency in kHz
+    double hpfCutoff = 20.0;
+    //amount of saturation
+    double saturation = 0.5;
+    //polarity of input (true == inverted)
+    bool polarity = true;
+
+    struct AudioInputProperties
+    {
+        //sample rate of audio stream
+        double sampleRate = 44100.0;
+        //number of channels in audio stream
+        int channels = 2;
+        //bit depth of audio stream
+        int bitDepth = 16;
+        //buffer size of audio stream
+        int bufferSize = 1024;
+        //audio class ID
+        int classID = 2;
+
+        //3 member functions:
+        //return sample rate
+        int getSampleRate(AudioInput audioInput); //returns sample rate
+        //set audio device and properties
+        void setAudioDevice(int channels, int bufferSize, int audioDeviceID = 0);
+        //return audio properties string
+        std::string getAudioProps(AudioInput audioInput); //returns a string with all audio properties
+    };
+
+    //3 things it can do:
+    //ajust incoming signal amplitude
+    void setInputAmplitude(double amplitude);
+    //enable or diable processing incoming signal
+    void processInputStream(bool process);
+    //invert polarity of incoming signal
+    void invertInputPolarity(bool polarity);
+};
+/*
+
+Thing 6: Audio Channel
+*/
+struct AudioChannel
+{
+    //stereo position
+    double  stereoPosition = 0.5;
+    //channel volume
+    double channelVolume = 0.707;
+    //channel name
+    std::string channelName = "ch 1";
+    //channel mute state
+    bool channelMute = false;
+    //channel send amount to reverb
+    double reverbSend = 0.5;
+
+    //3 things it can do:
+    //control the volume of a channel
+    void setVolume(double volume);
+    //control the stereo position of a channel
+    void setStereoPosition(double position);
+    //mute channel from summed output
+    void muteChannel(bool mute);
+};
+/*
+
+Thing 7: Channel EQ
+*/
+struct ChannelEQ
+{
+    //high-pass frequency in Hz
+    double highPassFrequency = 20.0;
+    //high frequenecy selection in kHz
+    double highFrequencySelection = 8.2;
+    //high frequency gain in dB
+    double highFrequencyGain = 0.5;
+    //low freuqency selection in Hz
+    double lowFrequencySelection = 245.45;
+    //low frequency gain in dB
+    double lowFrequencyGain = 0.5;
+
+    //3 things it can do:
+    //high-pass filter signal
+    void setHighPassFrequency(double highPassFrequency);
+    //select low frequency to boost/cut
+    void setLowFrequencySelection(double lowFrequencySelection);
+    //boost or cut selected frequencies
+    void setLowFrequencyGain(double lowFrequencyGain);
+};
+/*
+
+Thing 8: Channel Dynamics
+*/
+struct ChannelDynamics
+{
+    //compressor threshold in dB
+    double compressorThreshold = -12.0;
+    //compressor ratio
+    double compressorRatio = 2.0;
+    //compressor attack time in seconds
+    double compressorAttack = 0.012;
+    //compressor release time in seconds
+    double compressorRelease = 0.68;
+    //compressor makeup gain in dB
+    double compressorMakeupGain = 0.5;
+
+    //3 things it can do:
+    //compress signal below set threshold
+    void setCompressorThreshold(double compressorThreshold);
+    //adjust attack and release times
+    void setCompressorAttack(double compressorAttack);
+    //adjust makeup gain
+    void setCompressorMakeupGain(double compressorMakeupGain);
+};
+/*
+
+Thing 9: Reverb
+*/
+struct Reverb
+{
+    //reverb time in seconds
+    double reverbTime = 0.35;
+    //reverb pre-delay in seconds
+    double reverbPreDelay = 0.012;
+    //reverb diffusion amount
+    double reverbDiffusion = 0.5;
+    //reverb damping amount
+    double reverbDamping = 0.5;
+    //reverb output level
+    double reverbOutput = 0.707;
+
+    //3 things it can do:
+    //apply reverb to signal
+    void processChannelStream(int channel, double amount);
+    //adjust reverb time
+    void setReverbTime(double reverbTime);
+    //adjust reverb pre-delay
+    void setReverbPreDelay(double reverbPreDelay);
+};
+/*
+
+Thing 10) Audio Mixer
+*/
+struct AudioMixer
+{
+    //Audio Input
+    AudioInput audioInput;
+    //Audio Channel
+    AudioChannel audioChannel;
+    //Channel EQ
+    ChannelEQ channelEQ;
+    //Channel Dynamics
+    ChannelDynamics channelDynamics;
+    //Reverb
+    Reverb reverb;
+
+    //3 things it can do:
+    //position audio channel
+    void positionAudioChannel(int channelIndex, double position);
+    //apply parallel effects selectively
+    void applyParallelEffects(std::string channelName, int channelIndex, double amount);  
+    // process audio channels
+    void processChannel(int channelIndex, double amount);
+};
+
+/*
+====================================================================
+*/
 
 int main()
 {
