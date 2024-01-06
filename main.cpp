@@ -157,24 +157,24 @@ void Person::run(int howNotSlow, bool startWithLeftFoot)
     howNotSlow = distanceTraveled / timeRunning;
 }
 
- /*
- 2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
-    If you have 'unused parameter' warnings, you aren't using one of your function parameters in your implementation.
-    Solution: use the parameter in your implementation.
+/*
+2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
+   If you have 'unused parameter' warnings, you aren't using one of your function parameters in your implementation.
+   Solution: use the parameter in your implementation.
 
-    If you have 'shadows a field of <classname>' warnings, a local variable in the function has the same name as a class member.  
-    This local variable could also be a function parameter with the same name as the class member.
-    Solution: change the local variable's name so it is different from the class member variable's name.
- 
- 3) be sure to write the correct full qualified name for the nested type's member functions.
- 
- 4) After you finish defining each type/function, click the [run] button.  Clear up any errors or warnings as best you can.
- if your code produces a -Wpadded warning, add '-Wno-padded' to the .replit file with the other compiler flags (-Weverything -Wno-missing-prototypes etc etc)
- If your code produces -Wconversion warnings, do NOT use static_cast<> to solve the warnings.  
- Casting has not been covered yet.
- Change your code so that no warnings are produced WITHOUT using casting.
- This usually means you have to use identical types for all variables used in an expression that is producing that conversion warning.
- */
+   If you have 'shadows a field of <classname>' warnings, a local variable in the function has the same name as a class member.
+   This local variable could also be a function parameter with the same name as the class member.
+   Solution: change the local variable's name so it is different from the class member variable's name.
+
+3) be sure to write the correct full qualified name for the nested type's member functions.
+
+4) After you finish defining each type/function, click the [run] button.  Clear up any errors or warnings as best you can.
+if your code produces a -Wpadded warning, add '-Wno-padded' to the .replit file with the other compiler flags (-Weverything -Wno-missing-prototypes etc etc)
+If your code produces -Wconversion warnings, do NOT use static_cast<> to solve the warnings.
+Casting has not been covered yet.
+Change your code so that no warnings are produced WITHOUT using casting.
+This usually means you have to use identical types for all variables used in an expression that is producing that conversion warning.
+*/
 
 /*
 paste your code below
@@ -183,7 +183,7 @@ paste your code below
 */
 struct SimpleOscillator
 {
-    
+
     double frequency = 440.0;
     unsigned int waveform = 0;
     int octave = 0;
@@ -235,16 +235,14 @@ struct SamplePlayer
         double length = 2000.0;
         int index = 0;
 
-        //3 member functions:
         std::string printSampleInfo(double sampleRate, int channels, int bitDepth, double length, int index);
-        void modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleOscillator); 
+        void modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleOscillator);
         void reduceBitDepth(int bitDepth, int bitDepthReduction = 2);
     };
 
     void loadSample(std::string audioFile);
     void playSample();
     void loopSample();
-
 };
 
 void SamplePlayer::loadSample(std::string audioFileToLoad)
@@ -255,7 +253,6 @@ void SamplePlayer::loadSample(std::string audioFileToLoad)
 
 void SamplePlayer::playSample()
 {
-   
 }
 
 void SamplePlayer::loopSample()
@@ -266,8 +263,8 @@ void SamplePlayer::loopSample()
 
 std::string SamplePlayer::Sample::printSampleInfo(double sampRate, int numChannels, int numOfBits, double sampleLength, int sampleIndex)
 {
-        std::string sampleInfo = "Sample Rate: " + std::to_string(sampRate) + " Number of Channels: " +std::to_string(numChannels) + " Number of Bits: " + std::to_string(numOfBits) + " Sample Length: " + std::to_string(sampleLength) + " Sample Index: " + std::to_string(sampleIndex);
-    
+    std::string sampleInfo = "Sample Rate: " + std::to_string(sampRate) + " Number of Channels: " + std::to_string(numChannels) + " Number of Bits: " + std::to_string(numOfBits) + " Sample Length: " + std::to_string(sampleLength) + " Sample Index: " + std::to_string(sampleIndex);
+
     return sampleInfo;
 }
 
@@ -299,12 +296,11 @@ void ADRAmpEnvelope::sendOutputToOtherDevices(double outputAmount)
 void ADRAmpEnvelope::applyEnvelopeToAudioInput(double inputAmount)
 {
     ADRAmpEnvelope ampEnvelope;
-    ampEnvelope.amount = inputAmount;    
+    ampEnvelope.amount = inputAmount;
 }
 
 void ADRAmpEnvelope::listenForTrigger()
 {
-
 }
 
 struct SaturatingFilter
@@ -340,7 +336,7 @@ void SaturatingFilter::adjustOutputLevel(double outputAmount)
 
 struct AudioInput
 {
-    
+
     double amplitude = 0.707;
     bool stereo = true;
     double hpfCutoff = 20.0;
@@ -386,7 +382,6 @@ void AudioInput::invertInputPolarity(bool invert)
         AudioInput audioInput;
         audioInput.polarity = true;
     }
-    
 }
 
 double AudioInput::AudioInputProperties::getSampleRate(AudioInput::AudioInputProperties inputAudio)
@@ -404,19 +399,18 @@ void AudioInput::AudioInputProperties::setAudioDevice(int devID)
 std::string AudioInput::AudioInputProperties::getAudioProps(AudioInput inputAudio)
 {
     std::string audioProps = "Sample Rate: " + std::to_string(inputAudio.amplitude) + " Number of Channels: " + std::to_string(inputAudio.stereo) +
-    std::to_string(inputAudio.hpfCutoff) + " Resonance: " + std::to_string(inputAudio.saturation) + " Polarity: " + std::to_string(inputAudio.polarity);
+                             std::to_string(inputAudio.hpfCutoff) + " Resonance: " + std::to_string(inputAudio.saturation) + " Polarity: " + std::to_string(inputAudio.polarity);
 
     return audioProps;
 }
 
 struct AudioChannel
 {
-    double  stereoPosition = 0.5;
+    double stereoPosition = 0.5;
     double channelVolume = 0.707;
     std::string channelName = "ch 1";
     bool channelMute = false;
     double reverbSend = 0.5;
-
 
     void setVolume(double volume);
     void setStereoPosition(double position);
@@ -426,7 +420,7 @@ struct AudioChannel
 void AudioChannel::setVolume(double vol)
 {
     AudioChannel audioChannel;
-    audioChannel.channelVolume = vol;    
+    audioChannel.channelVolume = vol;
 }
 
 void AudioChannel::setStereoPosition(double strPosition)
@@ -531,7 +525,7 @@ struct AudioMixer
     Reverb reverb;
 
     void positionAudioChannel(double position);
-    void applyParallelEffects(std::string channelName, double amount);  
+    void applyParallelEffects(std::string channelName, double amount);
     void processChannel(AudioChannel audioChannel, double amount);
 };
 
