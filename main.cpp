@@ -2,7 +2,7 @@
  Project 3 - Part 2 / 5
  Video: Chapter 2 Part 6
  Implementations tasks
- 
+
 Create a branch named Part2
 
  tasks
@@ -42,7 +42,7 @@ struct CarWash
     float profitPerWeek = 495.95f;               
     //number of cars serviced per day               
     int numberOfCarsServiced = 10;               
-    
+
     struct Car  
     {
         bool isAPickupTruck = false;
@@ -62,7 +62,7 @@ struct CarWash
     float chargeCustomer(float discountPercentage);
     //detail the car interior
     void detailInterior( Car car );
-    
+
     Car carBeingServiced;  
 };
 }
@@ -77,7 +77,7 @@ struct CarWash
     float waterUsedPerWeek = 200.f;            
     float profitPerWeek = 495.95f;               
     int numberOfCarsServiced = 10;               
-    
+
     struct Car  
     {
         bool isAPickupTruck = false;
@@ -94,7 +94,7 @@ struct CarWash
     void washAndWaxCar( Car car ); 
     float chargeCustomer(float discountPercentage);
     void detailInterior( Car car );
-    
+
     Car carBeingServiced;  
 };
 }
@@ -526,7 +526,7 @@ struct AudioMixer
 
     void positionAudioChannel(double position);
     void applyParallelEffects(std::string channelName, double amount);
-    void processChannel(AudioChannel audioChannel, double amount);
+    void processChannel(AudioInput audioInput);
 };
 
 void AudioMixer::positionAudioChannel(double position)
@@ -544,14 +544,9 @@ void AudioMixer::applyParallelEffects(std::string chName, double amt)
     }
 }
 
-void AudioMixer::processChannel(AudioChannel chan, double amount)
+void AudioMixer::processChannel(AudioInput audioIn)
 {
-    AudioMixer audioMixerChan;
-    if (audioMixerChan.audioChannel.channelName == audioChannel.channelName)
-    {
-        AudioInput audioInput;
-        audioInput.processInputStream(true);
-    }
+    audioIn.processInputStream(true);
 }
 
 /*
