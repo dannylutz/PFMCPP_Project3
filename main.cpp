@@ -226,7 +226,6 @@ struct SamplePlayer
     bool loop = false;
     int loopStart = 12790;
     int loopEnd = 86500;
-    bool isPlaying = false;
 
     struct Sample
     {
@@ -254,11 +253,6 @@ void SamplePlayer::loadSample(std::string audioFileToLoad)
 
 void SamplePlayer::playSample()
 {
-    SamplePlayer samplePlayer;
-    if (!samplePlayer.isPlaying)
-    {
-        samplePlayer.isPlaying = true;
-    }
 }
 
 void SamplePlayer::loopSample()
