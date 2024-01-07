@@ -197,14 +197,12 @@ struct SimpleOscillator
 
 void SimpleOscillator::setOscillatorFrequency(double oscFrequency)
 {
-    SimpleOscillator simpleOscillator;
-    simpleOscillator.frequency = oscFrequency;
+    frequency = oscFrequency;
 }
 
 void SimpleOscillator::sendOutputToOtherDevices(double extOutput)
 {
-    SimpleOscillator simpleOscillator;
-    simpleOscillator.output = extOutput;
+    output = extOutput;
 }
 
 void SimpleOscillator::acceptControlVoltage(bool externalCV)
@@ -247,8 +245,7 @@ struct SamplePlayer
 
 void SamplePlayer::loadSample(std::string audioFileToLoad)
 {
-    SamplePlayer samplePlayer;
-    samplePlayer.audioFile = audioFileToLoad;
+    audioFile = audioFileToLoad;
 }
 
 void SamplePlayer::playSample()
@@ -257,8 +254,7 @@ void SamplePlayer::playSample()
 
 void SamplePlayer::loopSample()
 {
-    SamplePlayer samplePlayer;
-    samplePlayer.loop = true;
+    loop = true;
 }
 
 std::string SamplePlayer::Sample::printSampleInfo(double sampRate, int numChannels, int numOfBits, double sampleLength, int sampleIndex)
@@ -270,8 +266,7 @@ std::string SamplePlayer::Sample::printSampleInfo(double sampRate, int numChanne
 
 void SamplePlayer::Sample::reduceBitDepth(int depthOfBits, int reductionAmount)
 {
-    Sample sample;
-    sample.bitDepth = depthOfBits / reductionAmount;
+    bitDepth = depthOfBits / reductionAmount;
 }
 
 struct ADRAmpEnvelope
@@ -289,14 +284,12 @@ struct ADRAmpEnvelope
 
 void ADRAmpEnvelope::sendOutputToOtherDevices(double outputAmount)
 {
-    ADRAmpEnvelope ampEnvelope;
-    ampEnvelope.amount = outputAmount;
+    amount = outputAmount;
 }
 
 void ADRAmpEnvelope::applyEnvelopeToAudioInput(double inputAmount)
 {
-    ADRAmpEnvelope ampEnvelope;
-    ampEnvelope.amount = inputAmount;
+    amount = inputAmount;
 }
 
 void ADRAmpEnvelope::listenForTrigger()
@@ -318,20 +311,17 @@ struct SaturatingFilter
 
 void SaturatingFilter::setCutoff(double cutoffFq)
 {
-    SaturatingFilter saturatingFilter;
-    saturatingFilter.cutoff = cutoffFq;
+    cutoff = cutoffFq;
 }
 
 void SaturatingFilter::setDrive(double driveAmount)
 {
-    SaturatingFilter saturatingFilter;
-    saturatingFilter.drive = driveAmount;
+    drive = driveAmount;
 }
 
 void SaturatingFilter::adjustOutputLevel(double outputAmount)
 {
-    SaturatingFilter saturatingFilter;
-    saturatingFilter.output = outputAmount;
+    output = outputAmount;
 }
 
 struct AudioInput
@@ -363,8 +353,7 @@ struct AudioInput
 
 void AudioInput::setInputAmplitude(double amplitudeAmt)
 {
-    AudioInput audioInput;
-    audioInput.amplitude = amplitudeAmt;
+    amplitude = amplitudeAmt;
 }
 
 void AudioInput::processInputStream(bool shouldProcess)
@@ -379,21 +368,22 @@ void AudioInput::invertInputPolarity(bool invert)
 {
     if (invert)
     {
-        AudioInput audioInput;
-        audioInput.polarity = true;
+        polarity = true;
+    }
+    else
+    {
+        polarity = false;
     }
 }
 
 double AudioInput::AudioInputProperties::getSampleRate(AudioInput::AudioInputProperties inputAudio)
 {
-    double rate = inputAudio.sampleRate;
-    return rate;
+    return inputAudio.sampleRate;
 }
 
 void AudioInput::AudioInputProperties::setAudioDevice(int devID)
 {
-    AudioInputProperties audioInput;
-    audioInput.deviceID = devID;
+    deviceID = devID;
 }
 
 std::string AudioInput::AudioInputProperties::getAudioProps(AudioInput inputAudio)
@@ -419,20 +409,17 @@ struct AudioChannel
 
 void AudioChannel::setVolume(double vol)
 {
-    AudioChannel audioChannel;
-    audioChannel.channelVolume = vol;
+    channelVolume = vol;
 }
 
 void AudioChannel::setStereoPosition(double strPosition)
 {
-    AudioChannel audioChannel;
-    audioChannel.stereoPosition = strPosition;
+    stereoPosition = strPosition;
 }
 
 void AudioChannel::muteChannel(bool mute)
 {
-    AudioChannel audioChannel;
-    audioChannel.channelMute = mute;
+    channelMute = mute;
 }
 
 struct ChannelEQ
@@ -450,8 +437,7 @@ struct ChannelEQ
 
 void ChannelEQ::setHighPassFrequency(double hpFreq)
 {
-    ChannelEQ channelEQ;
-    channelEQ.highPassFrequency = hpFreq;
+    highPassFrequency = hpFreq;
 }
 
 struct ChannelDynamics
@@ -469,20 +455,17 @@ struct ChannelDynamics
 
 void ChannelDynamics::setCompressorThreshold(double compThreshold)
 {
-    ChannelDynamics channelDynamics;
-    channelDynamics.compressorThreshold = compThreshold;
+    compressorThreshold = compThreshold;
 }
 
 void ChannelDynamics::setCompressorAttack(double compAttack)
 {
-    ChannelDynamics channelDynamics;
-    channelDynamics.compressorAttack = compAttack;
+    compressorAttack = compAttack;
 }
 
 void ChannelDynamics::setCompressorMakeupGain(double compMakeupGain)
 {
-    ChannelDynamics channelDynamics;
-    channelDynamics.compressorMakeupGain = compMakeupGain;
+    compressorMakeupGain = compMakeupGain;
 }
 
 struct Reverb
@@ -500,20 +483,17 @@ struct Reverb
 
 void Reverb::setReverbOutput(double reverbOut)
 {
-    Reverb reverb;
-    reverb.reverbOutput = reverbOut;
+    reverbOutput = reverbOut;
 }
 
 void Reverb::setReverbTime(double verbTime)
 {
-    Reverb reverb;
-    reverb.reverbTime = verbTime;
+    reverbTime = verbTime;
 }
 
 void Reverb::setReverbPreDelay(double verbPreDelay)
 {
-    Reverb reverb;
-    reverb.reverbPreDelay = verbPreDelay;
+    reverbPreDelay = verbPreDelay;
 }
 
 struct AudioMixer
@@ -531,16 +511,14 @@ struct AudioMixer
 
 void AudioMixer::positionAudioChannel(double position)
 {
-    AudioMixer audioMixer;
-    audioMixer.audioChannel.stereoPosition = position;
+    audioChannel.stereoPosition = position;
 }
 
 void AudioMixer::applyParallelEffects(std::string chName, double amt)
 {
-    AudioMixer audioMixer;
-    if (audioMixer.audioChannel.channelName == chName)
+    if (audioChannel.channelName == chName)
     {
-        audioMixer.audioChannel.reverbSend = amt;
+        audioChannel.reverbSend = amt;
     }
 }
 
