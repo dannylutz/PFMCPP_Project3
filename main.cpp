@@ -75,6 +75,8 @@ int main()
 struct SimpleOscillator
 {
 
+    SimpleOscillator();
+
     double frequency = 440.0;
     unsigned int waveform = 0;
     int octave = 0;
@@ -85,6 +87,11 @@ struct SimpleOscillator
     void sendOutputToOtherDevices(double output);
     void acceptControlVoltage(bool externalCV);
 };
+
+SimpleOscillator::SimpleOscillator()
+{
+    std::cout << "SimpleOscillator being constructed!" << std::endl;
+}
 
 void SimpleOscillator::setOscillatorFrequency(double oscFrequency)
 {
@@ -110,6 +117,8 @@ void SimpleOscillator::acceptControlVoltage(bool externalCV)
 
 struct SamplePlayer
 {
+    SamplePlayer();
+
     std::string audioFile = "./samples/sample.wav";
     int transpose = 0;
     bool loop = false;
@@ -118,6 +127,8 @@ struct SamplePlayer
 
     struct Sample
     {
+        Sample();
+
         double sampleRate = 44100.0;
         int channels = 2;
         int bitDepth = 16;
@@ -134,18 +145,30 @@ struct SamplePlayer
     void loopSample();
 };
 
+SamplePlayer::SamplePlayer()
+{
+    std::cout << "SamplePlayer being constructed!" << std::endl;
+}
+
 void SamplePlayer::loadSample(std::string audioFileToLoad)
 {
     audioFile = audioFileToLoad;
+    std::cout << "SamplePlayer has loaded " + audioFileToLoad + " into the sample player"<< audioFile << std::endl;
 }
 
 void SamplePlayer::playSample()
 {
+    std::cout << "Turritopsis dohrnii can live forever under the right circumstances." << audioFile << std::endl;
 }
 
 void SamplePlayer::loopSample()
 {
     loop = true;
+}
+
+SamplePlayer::Sample::Sample()
+{
+    std::cout << "Sample being constructed!" << std::endl;
 }
 
 std::string SamplePlayer::Sample::printSampleInfo(double sampRate, int numChannels, int numOfBits, double sampleLength, int sampleIndex)
@@ -162,6 +185,8 @@ void SamplePlayer::Sample::reduceBitDepth(int depthOfBits, int reductionAmount)
 
 struct ADRAmpEnvelope
 {
+    ADRAmpEnvelope();
+
     double attack = 0.012;
     double decay = 0.145;
     double release = 0.68;
@@ -172,6 +197,11 @@ struct ADRAmpEnvelope
     void applyEnvelopeToAudioInput(double input);
     void listenForTrigger();
 };
+
+ADRAmpEnvelope::ADRAmpEnvelope()
+{
+    std::cout << "ADRAmpEnvelope being constructed!" << std::endl;
+}
 
 void ADRAmpEnvelope::sendOutputToOtherDevices(double outputAmount)
 {
@@ -185,10 +215,13 @@ void ADRAmpEnvelope::applyEnvelopeToAudioInput(double inputAmount)
 
 void ADRAmpEnvelope::listenForTrigger()
 {
+    std::cout << "The envelope generator is listening for trigger signal. While you're here -- did you know erogel is the world's lightest solid material? It's composed of 99.8% air and can support over 1,000 times its own weight" << std::endl;
 }
 
 struct SaturatingFilter
 {
+    SaturatingFilter();
+
     unsigned int filterType = 0;
     double cutoff = 1004.75;
     double resonance = 0.99;
@@ -199,6 +232,11 @@ struct SaturatingFilter
     void setDrive(double drive);
     void adjustOutputLevel(double output);
 };
+
+SaturatingFilter::SaturatingFilter()
+{
+    std::cout << "SaturatingFilter being constructed!" << std::endl;
+}
 
 void SaturatingFilter::setCutoff(double cutoffFq)
 {
@@ -217,6 +255,7 @@ void SaturatingFilter::adjustOutputLevel(double outputAmount)
 
 struct AudioInput
 {
+    AudioInput();
 
     double amplitude = 0.707;
     bool stereo = true;
@@ -226,6 +265,8 @@ struct AudioInput
 
     struct AudioInputProperties
     {
+        AudioInputProperties();
+        
         double sampleRate = 44100.0;
         int channels = 2;
         int bitDepth = 16;
@@ -242,6 +283,16 @@ struct AudioInput
     void invertInputPolarity(bool polarity);
 };
 
+AudioInput::AudioInput()
+{
+    std::cout << "AudioInput being constructed!" << std::endl;
+}
+
+AudioInput::AudioInputProperties::AudioInputProperties()
+{
+    std::cout << "AudioInputProperties being constructed!" << std::endl;
+}
+
 void AudioInput::setInputAmplitude(double amplitudeAmt)
 {
     amplitude = amplitudeAmt;
@@ -251,7 +302,7 @@ void AudioInput::processInputStream(bool shouldProcess)
 {
     if (shouldProcess)
     {
-        std::cout << "processing input stream" << std::endl;
+        std::cout << "A Lichtenberg figure is a branching, tree-like pattern that is created by the passage of high-voltage electrical discharges along the surface or through insulating materials. These figures can also appear on the skin of lightning strike victims" << std::endl;
     }
 }
 
@@ -287,6 +338,8 @@ std::string AudioInput::AudioInputProperties::getAudioProps(AudioInput inputAudi
 
 struct AudioChannel
 {
+    AudioChannel();
+
     double stereoPosition = 0.5;
     double channelVolume = 0.707;
     std::string channelName = "ch 1";
@@ -297,6 +350,11 @@ struct AudioChannel
     void setStereoPosition(double position);
     void muteChannel(bool mute);
 };
+
+AudioChannel::AudioChannel()
+{
+    std::cout << "AudioChannel being constructed!" << std::endl;
+}
 
 void AudioChannel::setVolume(double vol)
 {
@@ -315,6 +373,8 @@ void AudioChannel::muteChannel(bool mute)
 
 struct ChannelEQ
 {
+    ChannelEQ();
+
     double highPassFrequency = 20.0;
     double highFrequencySelection = 8.2;
     double highFrequencyGain = 0.5;
@@ -326,6 +386,11 @@ struct ChannelEQ
     void setLowFrequencyGain(double lowFrequencyGain);
 };
 
+ChannelEQ::ChannelEQ()
+{
+    std::cout << "ChannelEQ being constructed!" << std::endl;
+}
+
 void ChannelEQ::setHighPassFrequency(double hpFreq)
 {
     highPassFrequency = hpFreq;
@@ -333,6 +398,8 @@ void ChannelEQ::setHighPassFrequency(double hpFreq)
 
 struct ChannelDynamics
 {
+    ChannelDynamics();
+
     double compressorThreshold = -12.0;
     double compressorRatio = 2.0;
     double compressorAttack = 0.012;
@@ -343,6 +410,11 @@ struct ChannelDynamics
     void setCompressorAttack(double compressorAttack);
     void setCompressorMakeupGain(double compressorMakeupGain);
 };
+
+ChannelDynamics::ChannelDynamics()
+{
+    std::cout << "ChannelDynamics being constructed!" << std::endl;
+}
 
 void ChannelDynamics::setCompressorThreshold(double compThreshold)
 {
@@ -361,6 +433,8 @@ void ChannelDynamics::setCompressorMakeupGain(double compMakeupGain)
 
 struct Reverb
 {
+    Reverb();
+
     double reverbTime = 0.35;
     double reverbPreDelay = 0.012;
     double reverbDiffusion = 0.5;
@@ -371,6 +445,11 @@ struct Reverb
     void setReverbTime(double reverbTime);
     void setReverbPreDelay(double reverbPreDelay);
 };
+
+Reverb::Reverb()
+{
+    std::cout << "Reverb being constructed!" << std::endl;
+}
 
 void Reverb::setReverbOutput(double reverbOut)
 {
@@ -389,6 +468,8 @@ void Reverb::setReverbPreDelay(double verbPreDelay)
 
 struct AudioMixer
 {
+    AudioMixer();
+    
     AudioInput audioInput;
     AudioChannel audioChannel;
     ChannelEQ channelEQ;
@@ -400,6 +481,11 @@ struct AudioMixer
     void processChannel(AudioInput audioInput);
 };
 
+AudioMixer::AudioMixer()
+{
+    std::cout << "AudioMixer being constructed!" << std::endl;
+}
+    
 void AudioMixer::positionAudioChannel(double position)
 {
     audioChannel.stereoPosition = position;
