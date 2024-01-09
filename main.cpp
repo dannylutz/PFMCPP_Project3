@@ -528,26 +528,32 @@ int main()
     osc.setOscillatorFrequency(9.0210);
     osc.acceptControlVoltage(true);
     osc.sendOutputToOtherDevices(107.3);
+    std::cout << "Setting Oscillator Frequency to " + std::to_string(osc.frequency) + " Hz\n" << std::endl;
+
 
     AudioInput audioInput;
     audioInput.processInputStream(true);
     audioInput.invertInputPolarity(false);
     audioInput.setInputAmplitude(3.9);
+    std::cout << "Setting Input Amplitude to " + std::to_string(audioInput.amplitude) + " \n" << std::endl;
 
     SamplePlayer playa;
     playa.playSample();
     playa.loopSample();
     playa.loadSample("./samples/Raffi's_Greatest_Hits/BanannaPhone.wav");
+    
 
     SamplePlayer::Sample sampl;
     sampl.printSampleInfo(48.0, 2, 24, 192000 , 0);
     sampl.modulateSampleRate(playa, osc);
-    sampl.printSampleInfo(48.0, 2, 24, 14.72, 3);
+    sampl.reduceBitDepth(12);
+    std::cout << "Sample Rate reduced to " + std::to_string(sampl.sampleRate) + " bits\n" << std::endl;
     
     AudioInput::AudioInputProperties audioInputProps;
     audioInputProps.getAudioProps(audioInput);
     audioInputProps.getSampleRate(audioInputProps);
     audioInputProps.setAudioDevice(0);
+    std::cout << "Audio Device sample rate is set to " + std::to_string(audioInputProps.sampleRate) + "\n" << std::endl;
 
     ADRAmpEnvelope envelope;
     envelope.listenForTrigger();
@@ -558,31 +564,37 @@ int main()
     filta.setCutoff(117.6);
     filta.adjustOutputLevel(11.76);
     filta.setDrive(1.073);
+    std::cout << "Saturating Filter Cutoff frequency is set to " + std::to_string(filta.cutoff) + " Hz\n" << std::endl;
     
     AudioChannel audioChannel;
     audioChannel.setVolume(0.707);
     audioChannel.muteChannel(true);
     audioChannel.setStereoPosition(0.5);
+    std::cout << "Audio Channel Volume is set to " + std::to_string(audioChannel.channelVolume) + " \n" << std::endl;
     
     ChannelEQ chanQ;
     chanQ.setHighPassFrequency(20.0);
     chanQ.setLowFrequencySelection(20.4);
     chanQ.setLowFrequencyGain(5.2);
+    std::cout << "ChannelEQ High Pass Frequency is set to " + std::to_string(chanQ.highPassFrequency) + " Hz\n" << std::endl;
 
     ChannelDynamics chanDyn;
     chanDyn.setCompressorThreshold(-12.4);
     chanDyn.setCompressorAttack(0.012);
     chanDyn.setCompressorMakeupGain(0.5);
+    std::cout << "ChannelDynamics Compressor Threshold is set to " + std::to_string(chanDyn.compressorThreshold) + " dB \n" << std::endl;
 
     Reverb reverb;
     reverb.setReverbOutput(0.707);
     reverb.setReverbTime(0.35);
     reverb.setReverbPreDelay(0.012);
+    std::cout << "Reverb Time is set to " + std::to_string(reverb.reverbOutput) + " seconds \n" << std::endl;
 
     AudioMixer audioMixer;
     audioMixer.positionAudioChannel(0.5);
     audioMixer.applyParallelEffects("percs", 0.5);
     audioMixer.processChannel(audioInput);
+    std::cout << "Audio Mixer Stereo Position is set to " + std::to_string(audioMixer.audioChannel.stereoPosition) + " \n" << std::endl;
     
     std::cout << "good to go!" << std::endl;
 
