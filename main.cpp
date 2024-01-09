@@ -157,7 +157,7 @@ void SamplePlayer::loadSample(std::string audioFileToLoad)
 
 void SamplePlayer::playSample()
 {
-    std::cout << "Turritopsis dohrnii can live forever under the right circumstances.\n" << audioFile << std::endl;
+    std::cout << "Playing " + audioFile + " Turritopsis dohrnii can live forever under the right circumstances.\n" << std::endl;
 }
 
 void SamplePlayer::loopSample()
@@ -180,6 +180,11 @@ std::string SamplePlayer::Sample::printSampleInfo(double sampRate, int numChanne
 void SamplePlayer::Sample::reduceBitDepth(int depthOfBits, int reductionAmount)
 {
     bitDepth = depthOfBits / reductionAmount;
+}
+
+void SamplePlayer::Sample::modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleO)
+{
+    std::cout << "Sample rate of " + samplePlayer.audioFile + " is being modulated by the simple oscillator's frequency of " + std::to_string(simpleO.frequency) + "and the simple oscillator's frequency. Also, bananas are berries and strawberries are not!!\n" << std::endl;
 }
 
 struct ADRAmpEnvelope
@@ -395,6 +400,16 @@ void ChannelEQ::setHighPassFrequency(double hpFreq)
     highPassFrequency = hpFreq;
 }
 
+void ChannelEQ::setLowFrequencySelection(double lowFreqSel)
+{
+    lowFrequencySelection = lowFreqSel;
+}
+
+void ChannelEQ::setLowFrequencyGain(double lowFreqGain)
+{
+    lowFrequencyGain = lowFreqGain;
+}
+
 struct ChannelDynamics
 {
     ChannelDynamics();
@@ -511,36 +526,63 @@ int main()
 {
     SimpleOscillator osc;
     osc.setOscillatorFrequency(9.0210);
+    osc.acceptControlVoltage(true);
+    osc.sendOutputToOtherDevices(107.3);
 
     AudioInput audioInput;
     audioInput.processInputStream(true);
+    audioInput.invertInputPolarity(false);
+    audioInput.setInputAmplitude(3.9);
 
     SamplePlayer playa;
     playa.playSample();
+    playa.loopSample();
+    playa.loadSample("./samples/Raffi's_Greatest_Hits/BanannaPhone.wav");
 
-    SamplePlayer::Sample sample;
-    sample.printSampleInfo(48.0, 2, 24, 192000 , 0);
+    SamplePlayer::Sample sampl;
+    sampl.printSampleInfo(48.0, 2, 24, 192000 , 0);
+    sampl.modulateSampleRate(playa, osc);
+    sampl.printSampleInfo(48.0, 2, 24, 14.72, 3);
     
     AudioInput::AudioInputProperties audioInputProps;
     audioInputProps.getAudioProps(audioInput);
+    audioInputProps.getSampleRate(audioInputProps);
+    audioInputProps.setAudioDevice(0);
 
     ADRAmpEnvelope envelope;
     envelope.listenForTrigger();
+    envelope.sendOutputToOtherDevices(1080.12);
+    envelope.applyEnvelopeToAudioInput(420.42);
+
+    SaturatingFilter filta;
+    filta.setCutoff(117.6);
+    filta.adjustOutputLevel(11.76);
+    filta.setDrive(1.073);
     
     AudioChannel audioChannel;
     audioChannel.setVolume(0.707);
+    audioChannel.muteChannel(true);
+    audioChannel.setStereoPosition(0.5);
+    
+    ChannelEQ chanQ;
+    chanQ.setHighPassFrequency(20.0);
+    chanQ.setLowFrequencySelection(20.4);
+    chanQ.setLowFrequencyGain(5.2);
 
-    ChannelEQ channelEQ;
-    channelEQ.setHighPassFrequency(20.0);
-
-    ChannelDynamics channelDynamics;
-    channelDynamics.setCompressorThreshold(-12.4);
+    ChannelDynamics chanDyn;
+    chanDyn.setCompressorThreshold(-12.4);
+    chanDyn.setCompressorAttack(0.012);
+    chanDyn.setCompressorMakeupGain(0.5);
 
     Reverb reverb;
     reverb.setReverbOutput(0.707);
+    reverb.setReverbTime(0.35);
+    reverb.setReverbPreDelay(0.012);
 
     AudioMixer audioMixer;
     audioMixer.positionAudioChannel(0.5);
+    audioMixer.applyParallelEffects("percs", 0.5);
+    audioMixer.processChannel(audioInput);
     
     std::cout << "good to go!" << std::endl;
 
