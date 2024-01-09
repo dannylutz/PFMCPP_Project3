@@ -71,7 +71,6 @@ int main()
 //insert Example::main() into main() of user's repo.
 
 
-
 struct SimpleOscillator
 {
 
@@ -90,7 +89,7 @@ struct SimpleOscillator
 
 SimpleOscillator::SimpleOscillator()
 {
-    std::cout << "SimpleOscillator being constructed!" << std::endl;
+    std::cout << "SimpleOscillator being constructed!\n" << std::endl;
 }
 
 void SimpleOscillator::setOscillatorFrequency(double oscFrequency)
@@ -107,11 +106,11 @@ void SimpleOscillator::acceptControlVoltage(bool externalCV)
 {
     if (externalCV)
     {
-        std::cout << "external CV enabled" << std::endl;
+        std::cout << "external CV enabled\n" << std::endl;
     }
     else
     {
-        std::cout << "external CV not disabled" << std::endl;
+        std::cout << "external CV not disabled\n" << std::endl;
     }
 }
 
@@ -119,7 +118,7 @@ struct SamplePlayer
 {
     SamplePlayer();
 
-    std::string audioFile = "./samples/sample.wav";
+    std::string audioFile = "./samples/sample.wav\n";
     int transpose = 0;
     bool loop = false;
     int loopStart = 12790;
@@ -147,18 +146,18 @@ struct SamplePlayer
 
 SamplePlayer::SamplePlayer()
 {
-    std::cout << "SamplePlayer being constructed!" << std::endl;
+    std::cout << "SamplePlayer being constructed!\n" << std::endl;
 }
 
 void SamplePlayer::loadSample(std::string audioFileToLoad)
 {
     audioFile = audioFileToLoad;
-    std::cout << "SamplePlayer has loaded " + audioFileToLoad + " into the sample player"<< audioFile << std::endl;
+    std::cout << "SamplePlayer has loaded " + audioFileToLoad + " into the sample player\n"<< audioFile << std::endl;
 }
 
 void SamplePlayer::playSample()
 {
-    std::cout << "Turritopsis dohrnii can live forever under the right circumstances." << audioFile << std::endl;
+    std::cout << "Turritopsis dohrnii can live forever under the right circumstances.\n" << audioFile << std::endl;
 }
 
 void SamplePlayer::loopSample()
@@ -168,12 +167,12 @@ void SamplePlayer::loopSample()
 
 SamplePlayer::Sample::Sample()
 {
-    std::cout << "Sample being constructed!" << std::endl;
+    std::cout << "Sample being constructed!\n" << std::endl;
 }
 
 std::string SamplePlayer::Sample::printSampleInfo(double sampRate, int numChannels, int numOfBits, double sampleLength, int sampleIndex)
 {
-    std::string sampleInfo = "Sample Rate: " + std::to_string(sampRate) + " Number of Channels: " + std::to_string(numChannels) + " Number of Bits: " + std::to_string(numOfBits) + " Sample Length: " + std::to_string(sampleLength) + " Sample Index: " + std::to_string(sampleIndex);
+    std::string sampleInfo = "Sample Rate: " + std::to_string(sampRate) + " Number of Channels: " + std::to_string(numChannels) + " Number of Bits: " + std::to_string(numOfBits) + " Sample Length: " + std::to_string(sampleLength) + " Sample Index: " + std::to_string(sampleIndex) + "\n";
 
     return sampleInfo;
 }
@@ -200,7 +199,7 @@ struct ADRAmpEnvelope
 
 ADRAmpEnvelope::ADRAmpEnvelope()
 {
-    std::cout << "ADRAmpEnvelope being constructed!" << std::endl;
+    std::cout << "ADRAmpEnvelope being constructed!\n" << std::endl;
 }
 
 void ADRAmpEnvelope::sendOutputToOtherDevices(double outputAmount)
@@ -215,7 +214,7 @@ void ADRAmpEnvelope::applyEnvelopeToAudioInput(double inputAmount)
 
 void ADRAmpEnvelope::listenForTrigger()
 {
-    std::cout << "The envelope generator is listening for trigger signal. While you're here -- did you know erogel is the world's lightest solid material? It's composed of 99.8% air and can support over 1,000 times its own weight" << std::endl;
+    std::cout << "The envelope generator is listening for trigger signal. While you're here -- did you know erogel is the world's lightest solid material? It's composed of 99.8% air and can support over 1,000 times its own weight\n" << std::endl;
 }
 
 struct SaturatingFilter
@@ -235,7 +234,7 @@ struct SaturatingFilter
 
 SaturatingFilter::SaturatingFilter()
 {
-    std::cout << "SaturatingFilter being constructed!" << std::endl;
+    std::cout << "SaturatingFilter being constructed!\n" << std::endl;
 }
 
 void SaturatingFilter::setCutoff(double cutoffFq)
@@ -285,12 +284,12 @@ struct AudioInput
 
 AudioInput::AudioInput()
 {
-    std::cout << "AudioInput being constructed!" << std::endl;
+    std::cout << "AudioInput being constructed!\n" << std::endl;
 }
 
 AudioInput::AudioInputProperties::AudioInputProperties()
 {
-    std::cout << "AudioInputProperties being constructed!" << std::endl;
+    std::cout << "AudioInputProperties being constructed!\n" << std::endl;
 }
 
 void AudioInput::setInputAmplitude(double amplitudeAmt)
@@ -302,7 +301,7 @@ void AudioInput::processInputStream(bool shouldProcess)
 {
     if (shouldProcess)
     {
-        std::cout << "A Lichtenberg figure is a branching, tree-like pattern that is created by the passage of high-voltage electrical discharges along the surface or through insulating materials. These figures can also appear on the skin of lightning strike victims" << std::endl;
+        std::cout << "A Lichtenberg figure is a branching, tree-like pattern that is created by the passage of high-voltage electrical discharges along the surface or through insulating materials. These figures can also appear on the skin of lightning strike victims\n" << std::endl;
     }
 }
 
@@ -331,7 +330,7 @@ void AudioInput::AudioInputProperties::setAudioDevice(int devID)
 std::string AudioInput::AudioInputProperties::getAudioProps(AudioInput inputAudio)
 {
     std::string audioProps = "Sample Rate: " + std::to_string(inputAudio.amplitude) + " Number of Channels: " + std::to_string(inputAudio.stereo) +
-                             std::to_string(inputAudio.hpfCutoff) + " Resonance: " + std::to_string(inputAudio.saturation) + " Polarity: " + std::to_string(inputAudio.polarity);
+                             std::to_string(inputAudio.hpfCutoff) + " Resonance: " + std::to_string(inputAudio.saturation) + " Polarity: " + std::to_string(inputAudio.polarity) + "\n";
 
     return audioProps;
 }
@@ -353,7 +352,7 @@ struct AudioChannel
 
 AudioChannel::AudioChannel()
 {
-    std::cout << "AudioChannel being constructed!" << std::endl;
+    std::cout << "AudioChannel being constructed!\n" << std::endl;
 }
 
 void AudioChannel::setVolume(double vol)
@@ -388,7 +387,7 @@ struct ChannelEQ
 
 ChannelEQ::ChannelEQ()
 {
-    std::cout << "ChannelEQ being constructed!" << std::endl;
+    std::cout << "ChannelEQ being constructed!\n" << std::endl;
 }
 
 void ChannelEQ::setHighPassFrequency(double hpFreq)
@@ -413,7 +412,7 @@ struct ChannelDynamics
 
 ChannelDynamics::ChannelDynamics()
 {
-    std::cout << "ChannelDynamics being constructed!" << std::endl;
+    std::cout << "ChannelDynamics being constructed!\n" << std::endl;
 }
 
 void ChannelDynamics::setCompressorThreshold(double compThreshold)
@@ -448,7 +447,7 @@ struct Reverb
 
 Reverb::Reverb()
 {
-    std::cout << "Reverb being constructed!" << std::endl;
+    std::cout << "Reverb being constructed!\n" << std::endl;
 }
 
 void Reverb::setReverbOutput(double reverbOut)
@@ -483,7 +482,7 @@ struct AudioMixer
 
 AudioMixer::AudioMixer()
 {
-    std::cout << "AudioMixer being constructed!" << std::endl;
+    std::cout << "AudioMixer being constructed!\n" << std::endl;
 }
     
 void AudioMixer::positionAudioChannel(double position)
@@ -510,7 +509,40 @@ void AudioMixer::processChannel(AudioInput audioIn)
 
 int main()
 {
-    Example::main();
+    SimpleOscillator osc;
+    osc.setOscillatorFrequency(9.0210);
+
+    AudioInput audioInput;
+    audioInput.processInputStream(true);
+
+    SamplePlayer playa;
+    playa.playSample();
+
+    SamplePlayer::Sample sample;
+    sample.printSampleInfo(48.0, 2, 24, 192000 , 0);
+    
+    AudioInput::AudioInputProperties audioInputProps;
+    audioInputProps.getAudioProps(audioInput);
+
+    ADRAmpEnvelope envelope;
+    envelope.listenForTrigger();
+    
+    AudioChannel audioChannel;
+    audioChannel.setVolume(0.707);
+
+    ChannelEQ channelEQ;
+    channelEQ.setHighPassFrequency(20.0);
+
+    ChannelDynamics channelDynamics;
+    channelDynamics.setCompressorThreshold(-12.4);
+
+    Reverb reverb;
+    reverb.setReverbOutput(0.707);
+
+    AudioMixer audioMixer;
+    audioMixer.positionAudioChannel(0.5);
     
     std::cout << "good to go!" << std::endl;
+
+    return 0;
 }
