@@ -182,9 +182,9 @@ void SamplePlayer::Sample::reduceBitDepth(int depthOfBits, int reductionAmount)
     bitDepth = depthOfBits / reductionAmount;
 }
 
-void SamplePlayer::Sample::modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleO)
+void SamplePlayer::Sample::modulateSampleRate(SamplePlayer newSamplePlayer, SimpleOscillator simpleO)
 {
-    std::cout << "Sample rate of " + samplePlayer.audioFile + " is being modulated by the simple oscillator's frequency of " + std::to_string(simpleO.frequency) + "and the simple oscillator's frequency. Also, bananas are berries and strawberries are not!!\n" << std::endl;
+    std::cout << "Sample rate of " + newSamplePlayer.audioFile + " is being modulated by the simple oscillator's frequency of " + std::to_string(simpleO.frequency) + "and the simple oscillator's frequency. Also, bananas are berries and strawberries are not!!\n" << std::endl;
 }
 
 struct ADRAmpEnvelope
@@ -277,7 +277,7 @@ struct AudioInput
         int bufferSize = 1024;
         int deviceID = 2;
 
-        double getSampleRate(AudioInputProperties audioProps);
+        double getSampleRate();
         void setAudioDevice(int audioDeviceID);
         std::string getAudioProps(AudioInput audioInput);
     };
@@ -322,9 +322,9 @@ void AudioInput::invertInputPolarity(bool invert)
     }
 }
 
-double AudioInput::AudioInputProperties::getSampleRate(AudioInput::AudioInputProperties inputAudio)
+double AudioInput::AudioInputProperties::getSampleRate()
 {
-    return inputAudio.sampleRate;
+    return sampleRate;
 }
 
 void AudioInput::AudioInputProperties::setAudioDevice(int devID)
@@ -551,7 +551,7 @@ int main()
     
     AudioInput::AudioInputProperties audioInputProps;
     audioInputProps.getAudioProps(audioInput);
-    audioInputProps.getSampleRate(audioInputProps);
+    audioInputProps.getSampleRate();
     audioInputProps.setAudioDevice(0);
     std::cout << "Audio Device sample rate is set to " + std::to_string(audioInputProps.sampleRate) + "\n" << std::endl;
 
