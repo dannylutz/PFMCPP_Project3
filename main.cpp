@@ -49,15 +49,15 @@ struct SimpleOscillator
     double frequency = 440.0;
     unsigned int waveform = 0;
     int octave = 0;
-    double drift = 0.213;
-    double output = 0.707;
+    double drift, output;
+
 
     void setOscillatorFrequency(double frequency);
     void sendOutputToOtherDevices(double output);
     void acceptControlVoltage(bool externalCV);
 };
 
-SimpleOscillator::SimpleOscillator()
+SimpleOscillator::SimpleOscillator(): drift(0.213), output(0.707)
 {
     std::cout << "SimpleOscillator being constructed!\n" << std::endl;
 }
@@ -88,61 +88,62 @@ struct SamplePlayer
 {
     SamplePlayer();
 
-    std::string audioFile = "./samples/sample.wav\n";
     int transpose = 0;
     bool loop = false;
-    int loopStart = 12790;
-    int loopEnd = 86500;
+    double sampleRate = 44100.0;
+    int loopStart, loopEnd;
 
     struct Sample
     {
         Sample();
 
-        double sampleRate = 44100.0;
+        std::string audioFile = "./samples/sample.wav\n";
         int channels = 2;
         int bitDepth = 16;
-        double length = 2000.0;
-        int index = 0;
+        double length;
+        int index;
+        SimpleOscillator oscillator;
 
-        std::string printSampleInfo(double sampleRate, int channels, int bitDepth, double length, int index);
-        void modulateSampleRate(SamplePlayer samplePlayer, SimpleOscillator simpleOscillator);
+        std::string printSampleInfo();
+        void loadSample(std::string audioFile);
         void reduceBitDepth(int bitDepth, int bitDepthReduction = 2);
     };
 
-    void loadSample(std::string audioFile);
+    void modulateSampleRate(SimpleOscillator oscillator);    
     void playSample();
     void loopSample();
 };
 
-SamplePlayer::SamplePlayer()
+SamplePlayer::SamplePlayer(): loopStart(127900), loopEnd(865000)
 {
     std::cout << "SamplePlayer being constructed!\n" << std::endl;
 }
 
-void SamplePlayer::loadSample(std::string audioFileToLoad)
+
+void SamplePlayer::Sample::loadSample(std::string audioFileToLoad)
 {
-    audioFile = audioFileToLoad;
-    std::cout << "SamplePlayer has loaded " + audioFileToLoad + " into the sample player\n"<< audioFile << std::endl;
+    std::cout << "The sample " + audioFileToLoad + " has been loaded \n" << std::endl;
 }
 
 void SamplePlayer::playSample()
 {
-    std::cout << "Playing " + audioFile + " Turritopsis dohrnii can live forever under the right circumstances.\n" << std::endl;
+    std::cout << "Now playing the loaded sample\n" << std::endl;
 }
 
 void SamplePlayer::loopSample()
 {
     loop = true;
+    std::cout << "Looping file from sample number" + std::to_string(loopStart) + " to sample number " + std::to_string(loopEnd) << std::endl;
 }
 
-SamplePlayer::Sample::Sample()
+SamplePlayer::Sample::Sample(): length(2000.0), index(0)
 {
     std::cout << "Sample being constructed!\n" << std::endl;
 }
 
-std::string SamplePlayer::Sample::printSampleInfo(double sampRate, int numChannels, int numOfBits, double sampleLength, int sampleIndex)
+std::string SamplePlayer::Sample::printSampleInfo()
 {
-    std::string sampleInfo = "Sample Rate: " + std::to_string(sampRate) + " Number of Channels: " + std::to_string(numChannels) + " Number of Bits: " + std::to_string(numOfBits) + " Sample Length: " + std::to_string(sampleLength) + " Sample Index: " + std::to_string(sampleIndex) + "\n";
+    std::string sampleInfo = " Sample file: " + audioFile +" Number of Channels: " + std::to_string(channels) + " Number of Bits: " + std::to_string(bitDepth) + " Sample Length: " + std::to_string(length) + " Sample Index: " + std::to_string(index) + "\n";
 
     return sampleInfo;
 }
@@ -152,18 +153,16 @@ void SamplePlayer::Sample::reduceBitDepth(int depthOfBits, int reductionAmount)
     bitDepth = depthOfBits / reductionAmount;
 }
 
-void SamplePlayer::Sample::modulateSampleRate(SamplePlayer newSamplePlayer, SimpleOscillator simpleO)
+void SamplePlayer::modulateSampleRate(SimpleOscillator oscillator)
 {
-    std::cout << "Sample rate of " + newSamplePlayer.audioFile + " is being modulated by the simple oscillator's frequency of " + std::to_string(simpleO.frequency) + "and the simple oscillator's frequency. Also, bananas are berries and strawberries are not!!\n" << std::endl;
+    std::cout << "Sample rate of " + std::to_string(sampleRate) + " is being modulated by the simple oscillator's frequency of " + std::to_string(oscillator.frequency) + "and the simple oscillator's frequency. Also, bananas are berries and strawberries are not!!\n" << std::endl;
 }
 
 struct ADRAmpEnvelope
 {
     ADRAmpEnvelope();
 
-    double attack = 0.012;
-    double decay = 0.145;
-    double release = 0.68;
+    double attack, decay, release;
     unsigned int polarity = 0;
     double amount = 0.707;
 
@@ -172,7 +171,7 @@ struct ADRAmpEnvelope
     void listenForTrigger();
 };
 
-ADRAmpEnvelope::ADRAmpEnvelope()
+ADRAmpEnvelope::ADRAmpEnvelope(): attack(0.012), decay(0.145), release(0.68)
 {
     std::cout << "ADRAmpEnvelope being constructed!\n" << std::endl;
 }
@@ -198,16 +197,14 @@ struct SaturatingFilter
 
     unsigned int filterType = 0;
     double cutoff = 1004.75;
-    double resonance = 0.99;
-    double drive = 0.5;
-    double output = 0.707;
+    double resonance, drive, output;
 
     void setCutoff(double cutoff);
     void setDrive(double drive);
     void adjustOutputLevel(double output);
 };
 
-SaturatingFilter::SaturatingFilter()
+SaturatingFilter::SaturatingFilter(): resonance(0.99), drive(0.5), output(0.707)
 {
     std::cout << "SaturatingFilter being constructed!\n" << std::endl;
 }
@@ -235,17 +232,14 @@ struct AudioInput
     bool stereo = true;
     double hpfCutoff = 20.0;
     double saturation = 0.5;
-    bool polarity = true;
+    bool polarity;
 
     struct AudioInputProperties
     {
         AudioInputProperties();
         
         double sampleRate = 44100.0;
-        int channels = 2;
-        int bitDepth = 16;
-        int bufferSize = 1024;
-        int deviceID = 2;
+        int channels, bitDepth, bufferSize, deviceID;
 
         double getSampleRate();
         void setAudioDevice(int audioDeviceID);
@@ -257,12 +251,12 @@ struct AudioInput
     void invertInputPolarity(bool polarity);
 };
 
-AudioInput::AudioInput()
+AudioInput::AudioInput(): polarity(false)
 {
     std::cout << "AudioInput being constructed!\n" << std::endl;
 }
 
-AudioInput::AudioInputProperties::AudioInputProperties()
+AudioInput::AudioInputProperties::AudioInputProperties(): channels(2), bitDepth(16), bufferSize(128), deviceID(0)
 {
     std::cout << "AudioInputProperties being constructed!\n" << std::endl;
 }
@@ -317,15 +311,15 @@ struct AudioChannel
     double stereoPosition = 0.5;
     double channelVolume = 0.707;
     std::string channelName = "ch 1";
-    bool channelMute = false;
-    double reverbSend = 0.5;
+    bool channelMute;
+    double reverbSend;
 
     void setVolume(double volume);
     void setStereoPosition(double position);
     void muteChannel(bool mute);
 };
 
-AudioChannel::AudioChannel()
+AudioChannel::AudioChannel(): channelMute(false), reverbSend(0.5)
 {
     std::cout << "AudioChannel being constructed!\n" << std::endl;
 }
@@ -349,18 +343,14 @@ struct ChannelEQ
 {
     ChannelEQ();
 
-    double highPassFrequency = 20.0;
-    double highFrequencySelection = 8.2;
-    double highFrequencyGain = 0.5;
-    double lowFrequencySelection = 245.45;
-    double lowFrequencyGain = 0.5;
+    double highPassFrequency, highFrequencySelection, highFrequencyGain, lowFrequencySelection, lowFrequencyGain;
 
     void setHighPassFrequency(double highPassFrequency);
     void setLowFrequencySelection(double lowFrequencySelection);
     void setLowFrequencyGain(double lowFrequencyGain);
 };
 
-ChannelEQ::ChannelEQ()
+ChannelEQ::ChannelEQ(): highPassFrequency(20), highFrequencySelection(8.2), highFrequencyGain(0.5), lowFrequencySelection(245.45), lowFrequencyGain(1.2)
 {
     std::cout << "ChannelEQ being constructed!\n" << std::endl;
 }
@@ -384,8 +374,7 @@ struct ChannelDynamics
 {
     ChannelDynamics();
 
-    double compressorThreshold = -12.0;
-    double compressorRatio = 2.0;
+    double compressorThreshold, compressorRatio;
     double compressorAttack = 0.012;
     double compressorRelease = 0.68;
     double compressorMakeupGain = 0.5;
@@ -395,7 +384,7 @@ struct ChannelDynamics
     void setCompressorMakeupGain(double compressorMakeupGain);
 };
 
-ChannelDynamics::ChannelDynamics()
+ChannelDynamics::ChannelDynamics(): compressorThreshold(-12.0), compressorRatio(1.5)
 {
     std::cout << "ChannelDynamics being constructed!\n" << std::endl;
 }
@@ -403,6 +392,7 @@ ChannelDynamics::ChannelDynamics()
 void ChannelDynamics::setCompressorThreshold(double compThreshold)
 {
     compressorThreshold = compThreshold;
+    std::cout << "Compressor threshold set to: " << compressorThreshold << std::endl;
 }
 
 void ChannelDynamics::setCompressorAttack(double compAttack)
@@ -423,14 +413,14 @@ struct Reverb
     double reverbPreDelay = 0.012;
     double reverbDiffusion = 0.5;
     double reverbDamping = 0.5;
-    double reverbOutput = 0.707;
+    double reverbOutput;
 
     void setReverbOutput(double reverbOutput);
     void setReverbTime(double reverbTime);
     void setReverbPreDelay(double reverbPreDelay);
 };
 
-Reverb::Reverb()
+Reverb::Reverb(): reverbOutput(0.707)
 {
     std::cout << "Reverb being constructed!\n" << std::endl;
 }
@@ -512,14 +502,13 @@ int main()
     SamplePlayer playa;
     playa.playSample();
     playa.loopSample();
-    playa.loadSample("./samples/Raffi's_Greatest_Hits/BanannaPhone.wav");
+    playa.modulateSampleRate(osc);
     
 
     SamplePlayer::Sample sampl;
-    sampl.printSampleInfo(48.0, 2, 24, 192000 , 0);
-    sampl.modulateSampleRate(playa, osc);
-    sampl.reduceBitDepth(12);
-    std::cout << "Sample Rate reduced to " + std::to_string(sampl.sampleRate) + " bits\n" << std::endl;
+    sampl.loadSample("./samples/snare.wav");
+    sampl.printSampleInfo();
+    std::cout << "Bit depth reduced to " + std::to_string(sampl.bitDepth) + " bits\n" << std::endl;
     
     AudioInput::AudioInputProperties audioInputProps;
     audioInputProps.getAudioProps(audioInput);
