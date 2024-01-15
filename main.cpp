@@ -200,8 +200,8 @@ void SamplePlayer::loopSampleNTimes(int numOfLoops)
     while (numOfLoops > 0)
     {
         std::cout << "\nLooping file. Loop number " + std::to_string(loopCount) << std::endl;
-        numOfLoops--;
-        loopCount++;
+        --numOfLoops;
+        ++loopCount;
     }
     loop = false;
 }
@@ -240,7 +240,7 @@ void SamplePlayer::Sample::loadingFileProgress(double lengthOfFile)
     std::cout << "\nLoading progress: " << loadedPercentage << "%\n";
     std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(dataChunk / loadRate * 250)));
     }
-    index ++;
+    ++index;
     std::cout << "\nLoading complete. Sample available at index " + std::to_string(index) + "\n" << std::endl;
 }
 
@@ -700,7 +700,7 @@ void AudioMixer::processChannel(AudioInput audioIn)
 
 void AudioMixer::muteChannelOnSustainedClip()
 {
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < 20; ++i)
     {
         if (audioInput.amplitude > 1.5)
         {
