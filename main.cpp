@@ -198,11 +198,11 @@ void SamplePlayer::loopSampleNTimes(int numOfLoops)
     loop = true;
     int loopCount = 1;
     while (numOfLoops > 0)
-        {
-            std::cout << "\nLooping file. Loop number " + std::to_string(loopCount) << std::endl;
-            numOfLoops--;
-            loopCount++;
-        }
+    {
+        std::cout << "\nLooping file. Loop number " + std::to_string(loopCount) << std::endl;
+        numOfLoops--;
+        loopCount++;
+    }
     loop = false;
 }
 
@@ -229,15 +229,16 @@ void SamplePlayer::Sample::loadingFileProgress(double lengthOfFile)
     double loadRate = 800.00; //arbitrary number of samples per second
     double dataChunk = 100;
 
-    while (lengthOfFile > 0) {
+    while (lengthOfFile > 0) 
+    {
         lengthOfFile -= dataChunk;
         if (lengthOfFile < 0) {
             lengthOfFile = 0;
-        }
+    }
 
-        double loadedPercentage = 100.0 * (1 - (lengthOfFile / originalLength));
-        std::cout << "\nLoading progress: " << loadedPercentage << "%\n";
-        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(dataChunk / loadRate * 250)));
+    double loadedPercentage = 100.0 * (1 - (lengthOfFile / originalLength));
+    std::cout << "\nLoading progress: " << loadedPercentage << "%\n";
+    std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(dataChunk / loadRate * 250)));
     }
     index ++;
     std::cout << "\nLoading complete. Sample available at index " + std::to_string(index) + "\n" << std::endl;
@@ -324,11 +325,11 @@ void SaturatingFilter::adjustOutputLevel(double outputAmount)
 void SaturatingFilter::increaseDrive(double increaseAmount)
 {
     while (drive < increaseAmount)
-        {
-            drive += 0.07;
-            std::cout << "\nDrive increased to " + std::to_string(drive) << std::endl;       
-            std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(40)));
-        }
+    {
+        drive += 0.07;
+        std::cout << "\nDrive increased to " + std::to_string(drive) << std::endl;       
+        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(40)));
+    }
 }
 
 struct AudioInput
@@ -433,7 +434,7 @@ void AudioInput::increaseSaturation()
 
 void AudioInput::AudioInputProperties::setDefaultDeviceSettings()
 {
-    for (int i = 3; i >= 0; i--)
+    for (int i = 3; i >= 0; --i)
     {
         if (deviceID != 0)
         {
@@ -495,11 +496,11 @@ void AudioChannel::reduceVolumeTo50Percent()
         return;
     }
     while (channelVolume > 0.001)
-        {   
-            double increment = channelVolume / 2;
-            channelVolume -= increment;
-            std::cout << "\nVolume reduced to " + std::to_string(channelVolume) << std::endl;
-        }
+    {   
+        double increment = channelVolume / 2;
+        channelVolume -= increment;
+        std::cout << "\nVolume reduced to " + std::to_string(channelVolume) << std::endl;
+    }
 }
 
 struct ChannelEQ
@@ -599,7 +600,7 @@ void ChannelDynamics::enableAutoMakeupGain(bool state)
 {
     if (state)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; ++i)
         {
             gainReduction += 0.01;
             compressorMakeupGain = gainReduction;
