@@ -122,7 +122,7 @@ void SimpleOscillator::acceptControlVoltage(bool externalCV)
 
 void SimpleOscillator::sweepFrequencies(double startFq, double stopFq, double numOfSeconds)
 {
-    double fqIncrement = 1;
+    double fqIncrement = 100;
     double totalSteps = (stopFq - startFq) / fqIncrement;
     double timeIncrement = numOfSeconds / totalSteps;
     double currentFq = startFq;
@@ -226,8 +226,8 @@ void SamplePlayer::Sample::reduceBitDepth(int depthOfBits, int reductionAmount)
 void SamplePlayer::Sample::loadingFileProgress(double lengthOfFile)
 {
     double originalLength = lengthOfFile;
-    double loadRate = 400.00; //arbitrary number of samples per second
-    double dataChunk = 50;
+    double loadRate = 800.00; //arbitrary number of samples per second
+    double dataChunk = 100;
 
     while (lengthOfFile > 0) {
         lengthOfFile -= dataChunk;
@@ -722,13 +722,13 @@ void AudioMixer::muteChannelOnSustainedClip()
 int main()
 {
     Example::main();
- 
+    
     SimpleOscillator osc;
     osc.setOscillatorFrequency(9.0210);
     osc.acceptControlVoltage(true);
     osc.sendOutputToOtherDevices(107.3);
     std::cout << "Setting Oscillator Frequency to " + std::to_string(osc.frequency) + " Hz\n" << std::endl;
-    osc.sweepFrequencies(45, 6000, 4);
+    osc.sweepFrequencies(45, 6000, 2);
 
     AudioInput audioInput;
     audioInput.processInputStream(true);
